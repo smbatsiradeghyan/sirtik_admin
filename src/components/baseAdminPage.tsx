@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { getSlug }                      from "../helper/getSlug";
 
 
@@ -41,7 +41,7 @@ export const BaseAdminPage: FC<BaseAdminPageProps> = ({
           }
         </div>
       </div>
-      <div className={`page-content ${getSlug(title)}-page-content ${className ? className : ''}`}>
+      <div className={`page-content ${getSlug(title||'')}-page-content ${className ? className : ''}`}>
         {children}
       </div>
     </div>

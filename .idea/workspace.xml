@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="" />
+    <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/baseAdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseAdminPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +38,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "init",
     "last_opened_file_path": "/Users/venjo/projects/Sirtik/sirtik_admin/src",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -75,7 +80,7 @@
       <workItem from="1760528445248" duration="15739000" />
       <workItem from="1760601681331" duration="15214000" />
       <workItem from="1760940437248" duration="3655000" />
-      <workItem from="1760945902387" duration="19647000" />
+      <workItem from="1760945902387" duration="21127000" />
     </task>
     <servers />
   </component>
