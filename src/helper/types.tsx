@@ -31,11 +31,12 @@ export interface ISeoData {
 export type IMLSeoData = {
   [K in Locale]: ISeoData
 }
+export type  Locale = 'uk' | 'ru'
+export const Locale:{[K in Locale]:Locale}  = {
+  uk : 'uk',
+  ru : 'ru'
+}
 
-export enum Locale {
-  uk = 'uk',
-  ru = 'ru',
-};
 
 export interface ISectionData {
   name: string

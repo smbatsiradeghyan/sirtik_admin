@@ -1,22 +1,23 @@
-import { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture, ISeoData } from "../helper/types";
+import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture, ISeoData } from "../helper/types";
 import { Axios }                                                                                     from "../helper/baseApi";
 import { InfoUrls }                                                                                  from "./services.helper";
-import { AxiosResponse }                                                                             from "axios";
+import type { AxiosResponse } from "axios";
 
 
 export const PisSaveService = {
   bannerPic: async (data: { base64Image: string }): Promise<string> => {
     try {
       return (await Axios.post<string, { base64Image: string }>(InfoUrls.image('banners/'), data)).data as unknown as string;
-    } catch (error: any) {
-
+    } catch (error) {
+      console.error(error)
       return "error"
     }
   },
   pic      : async (type: string, data: { base64Image: string }): Promise<string> => {
     try {
       return (await Axios.post<string, { base64Image: string }>(InfoUrls.image(`${type}/`), data)).data as unknown as string;
-    } catch (error: any) {
+    } catch (error) {
+      console.error(error)
 
       return "error"
     }
@@ -25,14 +26,18 @@ export const PisSaveService = {
 
 export const SaveService = {
   categories: (data: ICategory): Promise<AxiosResponse<ICategory[]>> => Axios.post<ICategory[], ICategory>(InfoUrls.info('categories/'), data),
-  contacts  : (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[]>(InfoUrls.info('contacts/'), data),
+  contacts  : (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[], IContact[]>(InfoUrls.info('contacts/'), data),
   seo       : (data: ISeoData): Promise<AxiosResponse<IMLSeoData[]>> => Axios.post<IMLSeoData[], ISeoData>(InfoUrls.info('seo/'), data),
 
-  banner    : async (data: IBannerData): Promise<AxiosResponse<IBannerData[]>> => {
+  banner    : async (data: IBannerData): Promise<AxiosResponse<IBannerData[] | undefined>> => {
 
     if (data.img && !data.img.match(/^http(.*)/)) {
       const imgName = await PisSaveService.pic('banner', {base64Image: data.img})
-      if (imgName === 'error') return
+      if (imgName === 'error') {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        return
+      }
       data.img = imgName
     }
 
@@ -43,13 +48,21 @@ export const SaveService = {
 
     if (data.avatar && !data.avatar.match(/^http(.*)/)) {
       const imgName = await PisSaveService.pic('exhibition', {base64Image: data.avatar})
-      if (imgName === 'error') return
+      if (imgName === 'error') {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        return
+      }
       data.avatar = imgName
     }
     for (let i = 0; i < data.picturesFromExhibition.length; i++) {
       if (data.picturesFromExhibition[i] && !data.picturesFromExhibition[i].match(/^http(.*)/)) {
         const imgName = await PisSaveService.pic('exhibition', {base64Image: data.picturesFromExhibition[i]})
-        if (imgName === 'error') return
+        if (imgName === 'error') {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          return
+        }
         data.picturesFromExhibition[i] = imgName
       }
     }
@@ -61,7 +74,11 @@ export const SaveService = {
 
     if (data.url && !data.url.match(/^http(.*)/)) {
       const imgName = await PisSaveService.pic(`picture`, {base64Image: data.url})
-      if (imgName === 'error') return
+      if (imgName === 'error') {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        return
+      }
       data.url = imgName
     }
 

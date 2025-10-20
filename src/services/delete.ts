@@ -1,7 +1,7 @@
-import { IBannerData, ICategory, IExhibition, IPicture } from "../helper/types";
+import type { IBannerData, ICategory, IExhibition, IPicture } from "../helper/types";
 import { Axios }                                         from "../helper/baseApi";
 import { InfoUrls }                                      from "./services.helper";
-import { AxiosResponse }                                 from "axios";
+import type { AxiosResponse } from "axios";
 
 
 export const DeleteService = {

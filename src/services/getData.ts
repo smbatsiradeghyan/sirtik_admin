@@ -1,7 +1,7 @@
-import { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture } from "../helper/types";
+import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture } from "../helper/types";
 import { Axios }                                                                           from "../helper/baseApi";
 import { InfoUrls }                                                                        from "./services.helper";
-import { AxiosResponse }                                                                   from "axios";
+import type { AxiosResponse } from "axios";
 
 
 export const GetService = {

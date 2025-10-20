@@ -5,10 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/baseAdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseAdminPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/collapsableCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/deletePopup.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/editor.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/languageSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/languageSwitcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/switch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useQuery.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/about/about.page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/banner/banner.page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/banner/bannerCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/contacts.page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/exhibition.page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/exhibitionCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/exhibitions.page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/pipcture.select.popup.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/pipcture.upload.popup.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pictures/categories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pictures/picture.popup.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pictures/pictures.card.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pictures/pictures.page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/seo/seoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seoCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/seo/seoCard_old.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/delete.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/delete.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/getData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/getData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/save.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/save.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +102,7 @@
       <workItem from="1760528445248" duration="15739000" />
       <workItem from="1760601681331" duration="15214000" />
       <workItem from="1760940437248" duration="3655000" />
-      <workItem from="1760945902387" duration="21127000" />
+      <workItem from="1760945902387" duration="22364000" />
     </task>
     <servers />
   </component>

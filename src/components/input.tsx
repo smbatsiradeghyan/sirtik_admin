@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC, InputHTMLAttributes } from 'react';
+import  type { ChangeEventHandler, FC, InputHTMLAttributes } from 'react';
 
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
