@@ -1,8 +1,8 @@
-import React, { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
-import { ISeoData, ISeoMetaData }                                           from "../../helper/types";
-import { emptySeo }                                                         from "./seo.page";
-import { Input }                                                            from "../../components/input";
-import { Card }                                                             from "../../components/card";
+import { type ChangeEvent, type FC, useCallback, useEffect, useRef, useState } from 'react';
+import { type ISeoData, type ISeoMetaData, Locale }                            from "../../helper/types";
+import { emptySeo }                                                            from "./seo.page";
+import { Input }                                                               from "../../components/input";
+import { Card }                                                                from "../../components/card";
 
 
 interface SeoCardProps {
@@ -30,8 +30,8 @@ const updateJSLoad = (data: ISeoData) => JSON.stringify({
 
 
 export const SeoCard: FC<SeoCardProps> = ({data, onSave}) => {
-  const [activeLanguage, setActiveLanguage] = useState<string>('uk')
-  const toggleLanguage = useCallback(() => setActiveLanguage(c => c === 'ru' ? 'uk' : 'ru'), [])
+  const [activeLanguage, setActiveLanguage] = useState<Locale>(Locale.uk)
+  const toggleLanguage = useCallback(() => setActiveLanguage(c => c === Locale.ru ? Locale.uk : Locale.ru ), [])
   return (
     <Card
       className="seo"
@@ -67,7 +67,7 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
           || JSON.stringify(oldSeo.current.otherMetas) !== JSON.stringify(seo.otherMetas)
 
 
-  const canAdd = !!newMeta.as.trim() && !!newMeta.name.trim() && !!newMeta.content.trim()
+  const canAdd = !!newMeta.as.trim() && !!newMeta.name?.trim() && !!newMeta.content.trim()
   const onSeoChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSeo(current => {
 
