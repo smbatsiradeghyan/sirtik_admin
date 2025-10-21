@@ -1,7 +1,7 @@
-import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture, ISeoData } from "../helper/types";
-import { Axios }                                                                                     from "../helper/baseApi";
-import { InfoUrls }                                                                                  from "./services.helper";
-import type { AxiosResponse } from "axios";
+import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture, ISection, ISeoData } from "../helper/types";
+import { Axios }                                                                                                    from "../helper/baseApi";
+import { InfoUrls }                                                                                       from "./services.helper";
+import type { AxiosResponse }                                                                             from "axios";
 
 
 export const PisSaveService = {
@@ -25,9 +25,14 @@ export const PisSaveService = {
 }
 
 export const SaveService = {
+  contacts: (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[], IContact[]>(InfoUrls.info('contacts/'), data),
+  seo     : (data: ISeoData): Promise<AxiosResponse<IMLSeoData[]>> => Axios.post<IMLSeoData[], ISeoData>(InfoUrls.info('seo/'), data),
+  section: (data: ISection): Promise<AxiosResponse<ISection[]>> => Axios.post<ISection[], ISection>(InfoUrls.info('sections/'), data),
+
+  // todo : old functions should be deleted
+
+
   categories: (data: ICategory): Promise<AxiosResponse<ICategory[]>> => Axios.post<ICategory[], ICategory>(InfoUrls.info('categories/'), data),
-  contacts  : (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[], IContact[]>(InfoUrls.info('contacts/'), data),
-  seo       : (data: ISeoData): Promise<AxiosResponse<IMLSeoData[]>> => Axios.post<IMLSeoData[], ISeoData>(InfoUrls.info('seo/'), data),
 
   banner    : async (data: IBannerData): Promise<AxiosResponse<IBannerData[] | undefined>> => {
 

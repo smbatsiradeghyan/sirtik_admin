@@ -19,15 +19,15 @@ export const BaseAdminPage: FC<BaseAdminPageProps> = ({
                                                         className, children, title, onSave, canSave
                                                       }) => {
   return (
-    <div className="base-admin-page">
-      <div className="title">
+    <div className="w-full flex flex-col gap-8 items-center justify-center">
+      <div className="w-full flex items-center justify-center  relative">
         {
           !!onBack &&
           <button className="btn back-arrow" onClick={onBack}><i className="fa-regular fa-chevron-left"></i></button>
 
         }
-        {!!title && <h1>{title}</h1>}
-        <div className='actions'>
+        {!!title && <h1 className="text-3xl">{title}</h1>}
+        <div className=' absolute right-0 flex gap-4'>
 
           {
             !!onSecondaryAction &&
@@ -41,7 +41,7 @@ export const BaseAdminPage: FC<BaseAdminPageProps> = ({
           }
         </div>
       </div>
-      <div className={`page-content ${getSlug(title||'')}-page-content ${className ? className : ''}`}>
+      <div className={`w-full flex flex-col gap-8 items-center justify-center  ${getSlug(title||'')}-page-content ${className ? className : ''}`}>
         {children}
       </div>
     </div>

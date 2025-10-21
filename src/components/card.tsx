@@ -7,6 +7,7 @@ export interface CardProps extends PropsWithChildren {
   className?: string
   onClick?: () => void
   action?: () => void
+  actionComponent?: ReactNode
   actionTitle?: ReactNode
   title?: string
 }
@@ -16,8 +17,8 @@ const styles = {
     base: 'w-full bg-card text-card-foreground flex flex-col gap-6 rounded-xl     p-6 card-shadow transition-all',
   },
   title: {
-    wrapper: 'w-full flex items-center justify-center relative',
-    heading: 'w-full text-center leading-[30px] text-[22px] font-bold text-3xl',
+    wrapper: 'flex flex-1 items-center justify-center relative',
+    heading: 'flex flex-1 text-center leading-[30px] text-[22px] font-bold text-3xl',
     button: 'absolute right-0 top-0',
   },
 }
@@ -30,7 +31,8 @@ export const Card: FC<CardProps> = ({
                                       children,
                                       onClick,
                                       action,
-                                      actionTitle
+                                      actionTitle,
+                                      actionComponent,
                                     }) => {
   return (
     <div
@@ -41,6 +43,7 @@ export const Card: FC<CardProps> = ({
       {(!!title || !!action) && (
         <div className={styles.title.wrapper}>
           {title && <h2 className={styles.title.heading}>{title}</h2>}
+          {actionComponent}
           {!!action && (
             <button
               className={cn('btn', styles.title.button)}

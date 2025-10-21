@@ -21,8 +21,8 @@ export const Input: FC<InputProps> = ({
                                       }) => {
   const Component = isTextArea ? 'textarea' : 'input'
   return (
-    <div className="input-row">
-      {label && <label htmlFor={id || name}>{label}: </label>}
+    <div className="w-full flex flex-col gap-1">
+      {label && <label className="text-sm" htmlFor={id || name}>{label}: </label>}
       <Component id={id || name} type="text" name={name}{...inputProps} {...(isTextArea ? {rows: 4} : {})}/>
     </div>
   );

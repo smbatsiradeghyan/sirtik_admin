@@ -1,1 +1,1 @@
-export const getAdminUrl = (blockUrl: string, sub?: string): string => `/${blockUrl}${!!sub ? `/${sub}` : ''}`
+export const getAdminUrl = (blockUrl: string, sub?: string): string => `${blockUrl}${!!sub ? `/${sub}` : ''}`
