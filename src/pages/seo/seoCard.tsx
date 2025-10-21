@@ -1,8 +1,9 @@
-import { type ChangeEvent, type FC, useCallback, useEffect, useRef, useState } from 'react';
-import { type ISeoData, type ISeoMetaData, Locale }                            from "../../helper/types";
-import { emptySeo }                                                            from "./seo.page";
-import { Input }                                                               from "../../components/input";
-import { Card }                                                                from "../../components/card";
+import { type ChangeEvent, type FC, useEffect, useRef, useState } from 'react';
+import { type ISeoData, type ISeoMetaData }                       from "@/helper/types";
+import { Input }                                                  from "@/components/input";
+import { Card }                                                   from "@/components/card";
+import { LanguageSwitcher }                                       from "@/components/languageSwitcher.tsx";
+import { useLanguage }                                            from "@/hooks/useLanguage.ts";
 
 
 interface SeoCardProps {
@@ -30,16 +31,14 @@ const updateJSLoad = (data: ISeoData) => JSON.stringify({
 
 
 export const SeoCard: FC<SeoCardProps> = ({data, onSave}) => {
-  const [activeLanguage, setActiveLanguage] = useState<Locale>(Locale.uk)
-  const toggleLanguage = useCallback(() => setActiveLanguage(c => c === Locale.ru ? Locale.uk : Locale.ru ), [])
+  const {active, onSwitch} = useLanguage()
   return (
     <Card
       className="seo"
-      title={`${data?.[activeLanguage]?.title || data?.[activeLanguage]?.url || "New Page"} / ${activeLanguage}`}
-      action={toggleLanguage}
-      actionTitle={`Switch to ${activeLanguage === "ru" ? "UK" : "RU"}`}
+      title={`${data?.[active]?.title || data?.[active]?.url || "New Page"}`}
+      actionComponent={<LanguageSwitcher active={active} onSwitch={onSwitch}/>}
     >
-      <SingleLanguageCard data={data[activeLanguage]} onSave={onSave}/>
+      <SingleLanguageCard data={data[active]} onSave={onSave}/>
 
     </Card>
 
@@ -49,7 +48,7 @@ export const SeoCard: FC<SeoCardProps> = ({data, onSave}) => {
 
 const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void }> = ({data, onSave}) => {
   const oldSeo = useRef<ISeoData>(data)
-  const [seo, setSeo] = useState<ISeoData>(emptySeo)
+  const [seo, setSeo] = useState<ISeoData>(data)
   const [newMeta, setNewMeta] = useState<ISeoMetaData>(emptyMeta)
   useEffect(() => {
     setSeo(data)
@@ -67,7 +66,7 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
           || JSON.stringify(oldSeo.current.otherMetas) !== JSON.stringify(seo.otherMetas)
 
 
-  const canAdd = !!newMeta.as.trim() && !!newMeta.name?.trim() && !!newMeta.content.trim()
+  const canAdd = !!newMeta.as.trim() && (!!newMeta.name?.trim() || !!newMeta.property?.trim() )&& !!newMeta.content.trim()
   const onSeoChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSeo(current => {
 
@@ -115,7 +114,7 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
     onSave(seo)
   }
   return (
-    <div className={`card-content`}>
+    <div className="flex flex-col gap-4 w-full">
       <div className="row">
         <Input id={`$${seo.id}-Title`} label="Title" value={seo.title || ''} name="title" placeholder="Page title" onChange={onSeoChange}/>
         <Input id={`$${seo.id}-Author`} label="author" value={seo.author || ''} name="author" placeholder="Author" onChange={onSeoChange}/>
@@ -128,9 +127,9 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
       <Input isTextArea id={`$${seo.id}-keywords`} label="keywords" value={seo.keywords || ''} name="keywords" placeholder="keywords" onChange={onSeoChange}/>
 
 
-      <hr/>
+      <hr className="divider"/>
       <div className='row'>
-        <div className="input-as"> AS</div>
+        <div className="row-el-5%"> AS</div>
         <div className="input-name"> Name ?</div>
         <div className="input-name"> property ?</div>
         <div className="input-content"> Content</div>
@@ -138,20 +137,20 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
       </div>
       {
         seo.otherMetas.map((meta, metaIndex) => (<div className='row' key={metaIndex}>
-          <input className="input-as" value={meta.as || ''} name={`${metaIndex + 1}-as`} onChange={onMetaChange}/>
-          <input className="input-name" value={meta.name || ''} name={`${metaIndex + 1}-name`} onChange={onMetaChange}/>
-          <input className="input-name" value={meta.property || ''} name={`${metaIndex + 1}-property`} onChange={onMetaChange}/>
-          <input className="input-content" value={meta.content || ''} name={`${metaIndex + 1}-content`} onChange={onMetaChange}/>
-          <button className="btn-add remove" onClick={() => onRemoveMeta(metaIndex)}><i className="fa fa-trash"/></button>
+          <input className="row-el-5%" value={meta.as || ''} name={`${metaIndex + 1}-as`} onChange={onMetaChange}/>
+          <input className="row-el-15%" value={meta.name || ''} name={`${metaIndex + 1}-name`} onChange={onMetaChange}/>
+          <input className="row-el-15%" value={meta.property || ''} name={`${metaIndex + 1}-property`} onChange={onMetaChange}/>
+          <input className="" value={meta.content || ''} name={`${metaIndex + 1}-content`} onChange={onMetaChange}/>
+          <button className="row-el-5% btn delete" onClick={() => onRemoveMeta(metaIndex)}><i className="fa fa-trash"/></button>
 
         </div>))
       }
       <div className='row'>
-        <input className="input-as" value={newMeta.as || ''} name='0-as' onChange={onMetaChange}/>
-        <input className="input-name" value={newMeta.name || ''} name='0-name' onChange={onMetaChange}/>
-        <input className="input-name" value={newMeta.property || ''} name='0-property' onChange={onMetaChange}/>
-        <input className="input-content" value={newMeta.content || ''} name='0-content' onChange={onMetaChange}/>
-        <button className=" btn-add" disabled={!canAdd} onClick={onAddMeta}><i className="fas fa-plus"/></button>
+        <input className="row-el-5%" value={newMeta.as || ''} name='0-as' onChange={onMetaChange}/>
+        <input className="row-el-15%" value={newMeta.name || ''} name='0-name' onChange={onMetaChange}/>
+        <input className="row-el-15%" value={newMeta.property || ''} name='0-property' onChange={onMetaChange}/>
+        <input className="" value={newMeta.content || ''} name='0-content' onChange={onMetaChange}/>
+        <button className="row-el-5% btn add" disabled={!canAdd} onClick={onAddMeta}><i className="fas fa-plus"/></button>
       </div>
 
 

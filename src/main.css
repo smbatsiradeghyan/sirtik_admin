@@ -3,6 +3,16 @@
 @import "tailwindcss";
 
 @theme{
+    --primary: #7c9885;
+    --primary-foreground: #ffffff;
+    --muted: #f3f1ed;
+    --muted-foreground: #8b95a5;
+    --primary-action: #32b675;
+    --primary-remove: #F44336;
+    --primary-remove-bg: #ea3434;
+    --primary-remove-bg-50: #ea343477;
+    --primary-edit-bg: #b2b632;
+    --primary-edit-bg-disabled: #b2b632;
 
 }
 
@@ -40,7 +50,7 @@
     text-shadow: 0 0 10px #000000
 }
 
-input {
+input, textarea {
     width: 100%;
     border-radius: 8px;
     padding: 8px 16px;
@@ -50,17 +60,21 @@ input {
     transition: box-shadow .3s;
 }
 
+textarea {
+    resize: none;
+}
+
 .card-shadow {
     box-shadow: 0 0 3px #00000088
 }
 
-.btn {
+button.btn {
     padding: 4px 24px;
     line-height: 24px;
     font-size: 16px;
     font-weight: 500;
     letter-spacing: .5px;
-    background-color: #32b675;
+    background-color: var(--primary-action);
     color: white;
     box-shadow: 0 0 4px #00000033;
     cursor: pointer;
@@ -82,39 +96,168 @@ button.btn:hover {
 }
 
 button.btn.delete {
-    background-color: #ea3434;
+    background-color: var(--primary-remove-bg);
     color: #ffffff;
 }
 
 button.btn.delete:disabled {
-    background-color: #ea343488;
-
+    background-color: var(--primary-remove-bg-50);
     cursor: not-allowed;
 }
 
 
 button.btn.edit {
-    background-color: #b2b632;
+    background-color: var(--primary-edit-bg);
     color: #ffffff;
 
     button.btn.edit:disabled {
-        background-color: #eae407;
+        background-color: var(--primary-edit-bg-disabled);
 
         cursor: not-allowed;
     }
 
 
 }
+button.btn i{
+    color:inherit;
+}
 
-.shadow-dashboard{
+.shadow-dashboard {
     box-shadow: 0 0 5px #00000077;
 }
 
 
-.hover-shadow{
+.hover-shadow {
     box-shadow: 0 0 5px #00000077;
 }
-.hover-shadow:hover{
+
+.hover-shadow:hover {
     box-shadow: 0 0 10px #000000aa;
 }
+.hover-shadow-light {
+    box-shadow: 0 0 3px #00000088;;
+}
 
+.hover-shadow-light:hover {
+    box-shadow:  0 0 6px #00000033;;
+}
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-muted {
+    background-color: var(--muted);
+}
+
+.divider {
+    outline: none;
+    padding: 0;
+    box-shadow: 0 0 2px 0.5px #00000061;
+    border: none;
+    margin: 0;
+    width: 80%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 16px;
+}
+
+.row .input-as {
+    width: 5%;
+    min-width: 50px;
+}
+
+.row .input-name {
+    width: 20%;
+    min-width: 150px;
+
+}
+
+.row .input-content {
+    width: 65%;
+}
+.row-el-5\% {
+    width: 5%;
+    min-width: 50px;
+}
+.row-el-10\% {
+    width: 10%;
+    min-width: 100px;
+}
+.row-el-15\% {
+    width: 15%;
+    min-width: 150px;
+}
+.row-el-20\% {
+    width: 20%;
+    min-width: 200px;
+}
+.row-el-25\% {
+    width: 25%;
+    min-width: 250px;
+}
+.row-el-30\% {
+    width: 30%;
+    min-width: 300px;
+}
+.row-el-35\% {
+    width: 35%;
+    min-width: 350px;
+}
+.row-el-40\% {
+    width: 40%;
+    min-width: 400px;
+}
+.row-el-45\% {
+    width: 45%;
+    min-width: 450px;
+}
+.row-el-50\% {
+    width: 50%;
+    min-width: 500px;
+}
+.row-el-55\% {
+    width: 55%;
+    min-width: 550px;
+}
+.row-el-60\% {
+    width: 60%;
+    min-width: 600px;
+}
+.row-el-65\% {
+    width: 65%;
+    min-width: 650px;
+}
+.row-el-70\% {
+    width: 70%;
+    min-width: 700px;
+}
+.row-el-75\% {
+    width: 75%;
+    min-width: 750px;
+}
+.row-el-80\% {
+    width: 80%;
+    min-width: 800px;
+}
+.row-el-85\% {
+    width: 85%;
+    min-width: 850px;
+}
+.row-el-90\% {
+    width: 90%;
+    min-width: 900px;
+}
+.row-el-95\% {
+    width: 95%;
+    min-width: 950px;
+}
+.row-el-100\% {
+    width: 100%;
+    min-width: 1000px;
+}

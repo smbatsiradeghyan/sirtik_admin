@@ -52,6 +52,15 @@ export interface IContact {
   visible: boolean
 }
 
+export interface ISection {
+  id: string,
+  sectionId: string
+  htmlId: string
+  label: IMultiLanguageString
+  isVisible: boolean
+}
+
+
 export interface IContactsData {
   id: string
   // socials: ISocialData[]

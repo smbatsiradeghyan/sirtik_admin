@@ -4,59 +4,27 @@ import { getAdminUrl }   from "@/helper/getAdminUrls";
 import { useLocation }   from "react-router-dom";
 import { getActivePath } from "@/helper/getActivePath";
 import { useAdmin }      from "@/contexts/admin";
+import { DashboardTabs }     from "@/pages/pages.tsx";
 
 
-const DashboardTabs: {
-  name: string
-  url: string
 
-
-}[] = [
-
-  {
-    name: "Seo",
-    url : 'seo'
-  },
-  {
-    name: "Contacts",
-    url : 'contacts'
-  },
-  // {
-  //   name: "Banner",
-  //   url : 'banner'
-  // },
-  {
-    name: "About",
-    url : 'about'
-  },
-  // {
-  //   name: "Pictures",
-  //   url : 'pictures',
-  //
-  // },
-  // {
-  //   name: "Exhibition",
-  //   url : 'exhibition',
-  //
-  // },
-]
 
 
 export const Dashboard: FC = () => {
   const {onLogOut} = useAdmin()
   const location = useLocation();
   const activeTab = getActivePath(location.pathname)
-
+  console.log(DashboardTabs.map(tab => getAdminUrl(tab.url)))
   return (
     <div id="dashboard" className="flex flex-col flex-1 py-4 h-full w-full">
       <ul className="w-full h-full felx-1 flex flex-col justify-start gap-4 list-none p-0">
         {
-          DashboardTabs.map(dashboardTab => {
-            const isActive = dashboardTab.url === activeTab;
+          DashboardTabs.map(({url,name}) => {
+            const isActive = url === activeTab;
 
             return (
               <li
-                key={dashboardTab.url}
+                key={url}
                 className={`
             flex flex-col gap-4
             rounded-r-2xl
@@ -78,9 +46,9 @@ export const Dashboard: FC = () => {
                     : 'px-2.5 hover:text-xl hover:px-5 hover:tracking-wide hover:text-[#32b675]'
                   }
             `}
-                  href={getAdminUrl(dashboardTab.url)}
+                  href={getAdminUrl(url)}
                 >
-                  {dashboardTab.name}
+                  {name}
                 </a>
               </li>
             );

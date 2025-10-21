@@ -5,30 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/collapsableCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/deletePopup.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/editor.tsx" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/headerSections.page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/pages.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/baseAdminPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/baseAdminPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/languageSwitcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/languageSwitcher.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/switch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/switch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useQuery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useQuery.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/about/about.page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/banner/banner.page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/banner/bannerCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/contacts.page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/exhibition.page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/exhibitionCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/exhibitions.page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/pipcture.select.popup.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/exhibition/pipcture.upload.popup.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pictures/categories.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pictures/picture.popup.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pictures/pictures.card.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pictures/pictures.page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helper/getAdminUrls.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/getAdminUrls.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helper/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/appRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/appRouter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/seo/seoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seoCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/seo/seoCard_old.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/delete.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/delete.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sections/dashboard/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/dashboard/dashboard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/getData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/getData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/save.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/save.ts" afterDir="false" />
     </list>
@@ -60,8 +52,9 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "init",
-    "last_opened_file_path": "/Users/venjo/projects/Sirtik/sirtik_admin/src",
+    "last_opened_file_path": "/Users/venjo/projects/Sirtik/sirtik_admin/src/pages",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -75,6 +68,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/public/styles" />
       <recent name="$PROJECT_DIR$/src/pages/seo" />
@@ -102,7 +96,8 @@
       <workItem from="1760528445248" duration="15739000" />
       <workItem from="1760601681331" duration="15214000" />
       <workItem from="1760940437248" duration="3655000" />
-      <workItem from="1760945902387" duration="22364000" />
+      <workItem from="1760945902387" duration="24047000" />
+      <workItem from="1761025843262" duration="12350000" />
     </task>
     <servers />
   </component>

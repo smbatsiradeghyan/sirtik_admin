@@ -1,22 +1,14 @@
 import { type FC, useCallback, useEffect, useState } from 'react';
 import { BaseAdminPage }                             from "@/components/baseAdminPage";
-import { useQuery }                  from "@/hooks/useQuery.ts";
-import type { IMLSeoData, ISeoData } from "@/helper/types.tsx";
-import { GetService }                   from "@/services/getData.ts";
-import { SaveService }                  from "@/services/save.ts";
+import { useQuery }                                  from "@/hooks/useQuery.ts";
+import type { IMLSeoData, ISeoData }                 from "@/helper/types.tsx";
+import { GetService }                                from "@/services/getData.ts";
+import { SaveService }                               from "@/services/save.ts";
 import { SeoCard }                                   from "@/pages/seo/seoCard.tsx";
 
 
-export const emptySeo: ISeoData = {
-  url       : '',
-  title     : "",
-  locale    : "",
-  otherMetas: []
-}
-export const emptyMLSeo = {
-  ru: emptySeo,
-  uk: emptySeo
-}
+
+
 
 const SeoPage: FC = () => {
   const query = useQuery()
