@@ -170,3 +170,12 @@ export interface IExhibition {
   pictures: string[]
   picturesFromExhibition: string[]
 }
+
+export interface ICertificate{
+  _id?: string;
+  title: IMultiLanguageString
+  description?: IMultiLanguageString
+  year: string
+  image: string
+  id: string;
+}

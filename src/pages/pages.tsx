@@ -3,10 +3,10 @@ import { lazy } from 'react';
 
 const Contacts = lazy(() => import('./contacts.page'));
 const HeaderSections = lazy(() => import('./headerSections.page'));
-const HeroPage = lazy(() => import('./hero.page'));
+const Hero = lazy(() => import('./hero.page'));
 const Seo = lazy(() => import('./seo/seo.page'));
 const About = lazy(() => import('./about.page'));
-// const Exhibition = lazy(() => import('./exhibition/exhibition.page'));
+const Certificates = lazy(() => import('./certificates.page'));
 // const Exhibitions = lazy(() => import('./exhibition/exhibitions.page'));
 // const Pictures = lazy(() => import('./pictures/pictures.page'));
 
@@ -35,11 +35,11 @@ export const PagesList = [
   }, {
     name   : "Hero ✔️",
     path   : '/hero',
-    element: <HeroPage/>
+    element: <Hero/>
   }, {
-    name   : "Certificates --",
+    name   : "Certificates ✔️",
     path   : 'certificates',
-    element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
+    element: <Certificates/>
   }, {
     name   : "Reviews --",
     path   : '/reviews',

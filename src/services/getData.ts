@@ -2,6 +2,7 @@ import type { IAboutData, IContact, IHero, IMLSeoData, ISection } from "@/helper
 import { Axios }                                                  from "@/helper/baseApi";
 import { InfoUrls }                            from "./services.helper";
 import type { AxiosResponse }                  from "axios";
+import type { ICertificate }                                      from "@/helper/types.tsx";
 
 
 export const GetService = {
@@ -11,6 +12,7 @@ export const GetService = {
   seos    : (): Promise<AxiosResponse<IMLSeoData[]>> => Axios.get<IMLSeoData[]>(InfoUrls.info('seo/')),
   about      : (): Promise<AxiosResponse<IAboutData>> => Axios.get<IAboutData>(InfoUrls.info('about/')),
   hero      : (): Promise<AxiosResponse<IHero>> => Axios.get<IHero>(InfoUrls.info('hero/')),
+  certificates      : (): Promise<AxiosResponse<ICertificate[]>> => Axios.get<ICertificate[]>(InfoUrls.info('certificate/')),
 
 
   // exhibitions: (): Promise<AxiosResponse<IExhibition[]>> => Axios.get<IExhibition[]>(InfoUrls.info('exhibitions/')),

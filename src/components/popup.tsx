@@ -28,7 +28,7 @@ export const Popup: FC<IPopupProps> = ({
         className="absolute left-0 top-0 w-full h-full bg-black/55 -z-10"
         onClick={onClose}
       />
-      <Card {...cardProps}>
+      <Card {...cardProps} className="max-h-10/12 max-w-10/12 overflow-x-hidden overflow-y-auto">
         {children}
       </Card>
     </div>

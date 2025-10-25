@@ -242,7 +242,9 @@ button.btn.icon{
 
 }
 
-
+.bg-card{
+    background-color: var(--primary-foreground);
+}
 .text-muted-foreground {
     color: var(--muted-foreground);
 }

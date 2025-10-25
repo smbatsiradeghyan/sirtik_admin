@@ -1,8 +1,8 @@
 import { type FC, useCallback, useEffect, useRef, useState } from 'react';
 import { SaveService }                                       from "@/services/save";
-import { GetService }                               from "@/services/getData";
-import type { IAboutData, IAboutExpertise, Locale } from "@/helper/types";
-import { useQuery }                                 from "@/hooks/useQuery";
+import { GetService }                                        from "@/services/getData";
+import { type IAboutData, type IAboutExpertise, Locale }     from "@/helper/types";
+import { useQuery }                                          from "@/hooks/useQuery";
 import { BaseAdminPage }                                     from "@/components/baseAdminPage";
 import { UploadImage }                                       from "@/components/uploadImage.tsx";
 import { Editor }                                            from "@/components/Editor.tsx";
@@ -19,14 +19,14 @@ const defaultData: IAboutData = {
   }
 }
 const defaultExpertise: IAboutExpertise = {
-  icon:'',
+  icon : '',
   title: {
     ru: '',
     uk: ''
   }
 }
 
-const addMissedExpertise = (expertise?:IAboutExpertise[])=>[0,1,2,3].map(index=>expertise?.[index] ?? defaultExpertise)
+const addMissedExpertise = (expertise?: IAboutExpertise[]) => [0, 1, 2, 3].map(index => expertise?.[index] ?? defaultExpertise)
 
 const AboutPage: FC = () => {
   const query = useQuery()
@@ -36,11 +36,11 @@ const AboutPage: FC = () => {
 
   const canSave = JSON.stringify(about) !== JSON.stringify(defaultValues.current)
 
-  const setData=(res?:IAboutData)=>{
-    const data:IAboutData = {
+  const setData = (res?: IAboutData) => {
+    const data: IAboutData = {
       description: res?.description ?? defaultData.description,
-      image:  res?.image ?? defaultData.image,
-      expertise: addMissedExpertise(res?.expertise)
+      image      : res?.image ?? defaultData.image,
+      expertise  : addMissedExpertise(res?.expertise)
     }
     setAbout(data)
     defaultValues.current = data
@@ -59,6 +59,24 @@ const AboutPage: FC = () => {
   const onEditorChange = useCallback((value: string, locale: Locale) =>
       setAbout(current => ({...current, description: {...current.description, [locale]: value}}))
     , [])
+
+  const onMLChange = useCallback((index: number) => (value: string, _name: string, locale: Locale) =>
+      setAbout(current =>
+        ({
+          ...current,
+          expertise: current.expertise
+                            .map((expertise, i) => i === index ? ({...expertise, title: {...expertise.title, [locale]: value}}) : expertise)
+        }))
+    , [])
+  const onChange = useCallback((index: number) => (value: string) =>
+      setAbout(current =>
+        ({
+          ...current,
+          expertise: current.expertise
+                            .map((expertise, i) => i === index ? ({...expertise, icon: value}) : expertise)
+        }))
+    , [])
+
 
   const onSave = async () => {
     const saveQuery = query<IAboutData>(() => SaveService.about(about))
@@ -81,23 +99,23 @@ const AboutPage: FC = () => {
         <Editor onEditorChange={onEditorChange} value={about.description}/>
       </div>
       <hr className="divider"/>
-      <Card >
+      <Card>
         <div className="row">
-          <div className="row-el-10%">Icon</div>
+          <div className="row-el-15%">Icon</div>
           <div className="row-el-40%">Title Uk</div>
           <div className="row-el-40%">Title Ru</div>
         </div>
         {
-          about.expertise.map((expertise,index)=>
-            <div className="row" key={index+expertise.icon}>
+          about.expertise.map((expertise, index) =>
+            <div className="row" key={index }>
               <div className="row-el-15%">
-                <Input value={expertise.icon} name="icon" placeholder="icon" />
+                <Input key="icon" value={expertise.icon} name="icon" onInputChange={onChange(index)}/>
               </div>
               <div className="row-el-40%">
-                <Input value={expertise.title.uk} name="icon" placeholder="icon" />
+                <Input key="title.uk" value={expertise.title.uk} name="title" locale={Locale.uk} onMLInputChange={onMLChange(index)}/>
               </div>
               <div className="row-el-40%">
-                <Input value={expertise.title.uk} name="icon" placeholder="icon" />
+                <Input key="title.ru" value={expertise.title.ru} name="title" locale={Locale.ru} onMLInputChange={onMLChange(index)}/>
               </div>
 
             </div>

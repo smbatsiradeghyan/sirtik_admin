@@ -1,7 +1,7 @@
-import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IHero, IMLSeoData, IPicture, ISection, ISeoData } from "../helper/types";
-import { Axios }                                                                                                           from "../helper/baseApi";
-import { InfoUrls }                                                                                       from "./services.helper";
-import type { AxiosResponse }                                                                             from "axios";
+import type { IAboutData, IBannerData, ICategory, ICertificate, IContact, IExhibition, IHero, IMLSeoData, IPicture, ISection, ISeoData } from "@/helper/types";
+import { Axios }                                                                                                                         from "@/helper/baseApi";
+import { InfoUrls }                                                                                                                      from "./services.helper";
+import type { AxiosResponse }                                                                                                            from "axios";
 
 
 export const PisSaveService = {
@@ -27,9 +27,9 @@ export const PisSaveService = {
 export const SaveService = {
   contacts: (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[], IContact[]>(InfoUrls.info('contacts/'), data),
   seo     : (data: ISeoData): Promise<AxiosResponse<IMLSeoData[]>> => Axios.post<IMLSeoData[], ISeoData>(InfoUrls.info('seo/'), data),
-  section: (data: ISection): Promise<AxiosResponse<ISection[]>> => Axios.post<ISection[], ISection>(InfoUrls.info('sections/'), data),
+  section : (data: ISection): Promise<AxiosResponse<ISection[]>> => Axios.post<ISection[], ISection>(InfoUrls.info('sections/'), data),
 
-  about       : async (data: IAboutData): Promise<AxiosResponse<IAboutData>> => {
+  about      : async (data: IAboutData): Promise<AxiosResponse<IAboutData>> => {
 
     if (data.image && !data.image.match(/^http(.*)/)) {
       data.image = await PisSaveService.pic('about', {base64Image: data.image})
@@ -45,6 +45,15 @@ export const SaveService = {
     }
 
     return Axios.post<IHero, IHero>(InfoUrls.info('hero/'), data)
+
+  },
+  certificate: async (data: ICertificate): Promise<AxiosResponse<ICertificate[]>> => {
+
+    if (data.image && !data.image.match(/^http(.*)/)) {
+      data.image = await PisSaveService.pic('certificate', {base64Image: data.image})
+    }
+
+    return Axios.post<ICertificate[], ICertificate>(InfoUrls.info('certificate/'), data)
 
   },
 
