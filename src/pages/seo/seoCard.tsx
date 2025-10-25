@@ -130,9 +130,11 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
       <hr className="divider"/>
       <div className='row'>
         <div className="row-el-5%"> AS</div>
-        <div className="input-name"> Name ?</div>
-        <div className="input-name"> property ?</div>
-        <div className="input-content"> Content</div>
+        <div className="row-el-15%"> Name ?</div>
+        <div className="row-el-15%"> property ?</div>
+        <div className="w-full"> Content</div>
+        <div className="row-el-5%"></div>
+
 
       </div>
       {
@@ -141,7 +143,7 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
           <input className="row-el-15%" value={meta.name || ''} name={`${metaIndex + 1}-name`} onChange={onMetaChange}/>
           <input className="row-el-15%" value={meta.property || ''} name={`${metaIndex + 1}-property`} onChange={onMetaChange}/>
           <input className="" value={meta.content || ''} name={`${metaIndex + 1}-content`} onChange={onMetaChange}/>
-          <button className="row-el-5% btn delete" onClick={() => onRemoveMeta(metaIndex)}><i className="fa fa-trash"/></button>
+          <button className="row-el-5% btn delete icon" onClick={() => onRemoveMeta(metaIndex)}><i className="fa fa-trash"/></button>
 
         </div>))
       }
@@ -150,7 +152,7 @@ const SingleLanguageCard: FC<{ data: ISeoData, onSave: (data: ISeoData) => void 
         <input className="row-el-15%" value={newMeta.name || ''} name='0-name' onChange={onMetaChange}/>
         <input className="row-el-15%" value={newMeta.property || ''} name='0-property' onChange={onMetaChange}/>
         <input className="" value={newMeta.content || ''} name='0-content' onChange={onMetaChange}/>
-        <button className="row-el-5% btn add" disabled={!canAdd} onClick={onAddMeta}><i className="fas fa-plus"/></button>
+        <button className="row-el-5% btn add icon" disabled={!canAdd} onClick={onAddMeta}><i className="fas fa-plus"/></button>
       </div>
 
 

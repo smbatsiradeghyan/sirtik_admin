@@ -91,17 +91,17 @@ export interface IBannerData {
   texts_color?: string
 }
 export interface IMultiLanguageString {
-  ru: string
-  uk: string
+  [Locale.uk]: string
+  [Locale.ru]: string
 }
 
-
+export interface IAboutExpertise{
+  icon: string,
+  title: IMultiLanguageString
+}
 export interface IAboutData {
   _id?: string;
-  expertise: {
-    icon: string,
-    title: IMultiLanguageString
-  }[]
+  expertise: IAboutExpertise[]
   image: string
   description: IMultiLanguageString
 
@@ -111,6 +111,16 @@ export interface IBasePageData {
   header: IHeaderData
   seo: ISeoData
 
+}
+export interface IHero{
+  _id?: string;
+
+  avatar: string
+  title: IMultiLanguageString
+  description: IMultiLanguageString
+  clientsCount?: number
+  experience?: number
+  happyClients?: number
 }
 
 export interface IHomePageData extends IBasePageData {

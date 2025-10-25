@@ -1,5 +1,5 @@
-import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IMLSeoData, IPicture, ISection, ISeoData } from "../helper/types";
-import { Axios }                                                                                                    from "../helper/baseApi";
+import type { IAboutData, IBannerData, ICategory, IContact, IExhibition, IHero, IMLSeoData, IPicture, ISection, ISeoData } from "../helper/types";
+import { Axios }                                                                                                           from "../helper/baseApi";
 import { InfoUrls }                                                                                       from "./services.helper";
 import type { AxiosResponse }                                                                             from "axios";
 
@@ -28,6 +28,25 @@ export const SaveService = {
   contacts: (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[], IContact[]>(InfoUrls.info('contacts/'), data),
   seo     : (data: ISeoData): Promise<AxiosResponse<IMLSeoData[]>> => Axios.post<IMLSeoData[], ISeoData>(InfoUrls.info('seo/'), data),
   section: (data: ISection): Promise<AxiosResponse<ISection[]>> => Axios.post<ISection[], ISection>(InfoUrls.info('sections/'), data),
+
+  about       : async (data: IAboutData): Promise<AxiosResponse<IAboutData>> => {
+
+    if (data.image && !data.image.match(/^http(.*)/)) {
+      data.image = await PisSaveService.pic('about', {base64Image: data.image})
+    }
+
+    return Axios.post<IAboutData, IAboutData>(InfoUrls.info('about/'), data)
+
+  },
+  hero       : async (data: IHero): Promise<AxiosResponse<IHero>> => {
+
+    if (data.avatar && !data.avatar.match(/^http(.*)/)) {
+      data.avatar = await PisSaveService.pic('hero', {base64Image: data.avatar})
+    }
+
+    return Axios.post<IHero, IHero>(InfoUrls.info('hero/'), data)
+
+  },
 
   // todo : old functions should be deleted
 
@@ -90,15 +109,7 @@ export const SaveService = {
     return Axios.post<IPicture[], IPicture>(InfoUrls.info('pictures/'), data)
   },
 
-  about       : async (data: IAboutData): Promise<AxiosResponse<IAboutData>> => {
 
-    if (data.image && !data.image.match(/^http(.*)/)) {
-      data.image = await PisSaveService.pic('about', {base64Image: data.image})
-    }
-
-    return Axios.post<IAboutData, IAboutData>(InfoUrls.info('about/'), data)
-
-  },
   moveBanner  : (data: { from: number, to: number }): Promise<AxiosResponse<IBannerData[]>> => Axios.put<IBannerData[], { from: number, to: number }>(InfoUrls.info('banners/'), data),
   movePictures: (data: { from: number, to: number }): Promise<AxiosResponse<IPicture[]>> => Axios.put<IPicture[], { from: number, to: number }>(InfoUrls.info('pictures/'), data)
 

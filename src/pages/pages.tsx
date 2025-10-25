@@ -3,9 +3,9 @@ import { lazy } from 'react';
 
 const Contacts = lazy(() => import('./contacts.page'));
 const HeaderSections = lazy(() => import('./headerSections.page'));
-// const Banners = lazy(() => import('./banner/banner.page'));
+const HeroPage = lazy(() => import('./hero.page'));
 const Seo = lazy(() => import('./seo/seo.page'));
-// const About = lazy(() => import('./about/about.page'));
+const About = lazy(() => import('./about.page'));
 // const Exhibition = lazy(() => import('./exhibition/exhibition.page'));
 // const Exhibitions = lazy(() => import('./exhibition/exhibitions.page'));
 // const Pictures = lazy(() => import('./pictures/pictures.page'));
@@ -29,13 +29,13 @@ export const PagesList = [
     element: <Contacts/>
   },
   {
-    name   : "About --",
+    name   : "About ✔️",
     path   : '/about',
-    element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
+    element: <About/>
   }, {
-    name   : "Hero --",
+    name   : "Hero ✔️",
     path   : '/hero',
-    element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
+    element: <HeroPage/>
   }, {
     name   : "Certificates --",
     path   : 'certificates',
