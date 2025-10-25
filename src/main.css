@@ -1,7 +1,5 @@
-/*@import "tailwindcss/preflight";*/
-/*@import "tailwindcss/a";*/
-@import "tailwindcss";
 
+@import "tailwindcss";
 @theme{
     --primary: #7c9885;
     --primary-foreground: #ffffff;
@@ -125,10 +123,15 @@ button.btn i{
 .shadow-dashboard {
     box-shadow: 0 0 5px #00000077;
 }
+button.btn.icon{
+    width: 50px;
+    padding: 4px 0;
+}
 
 
 .hover-shadow {
     box-shadow: 0 0 5px #00000077;
+    transition: box-shadow .5s;
 }
 
 .hover-shadow:hover {
@@ -136,6 +139,8 @@ button.btn i{
 }
 .hover-shadow-light {
     box-shadow: 0 0 3px #00000088;;
+    transition: box-shadow .5s;
+
 }
 
 .hover-shadow-light:hover {
@@ -166,21 +171,10 @@ button.btn i{
     width: 100%;
     gap: 16px;
 }
-
-.row .input-as {
-    width: 5%;
-    min-width: 50px;
+.row.items-start {
+    align-items: flex-start;
 }
 
-.row .input-name {
-    width: 20%;
-    min-width: 150px;
-
-}
-
-.row .input-content {
-    width: 65%;
-}
 .row-el-5\% {
     width: 5%;
     min-width: 50px;
@@ -195,69 +189,71 @@ button.btn i{
 }
 .row-el-20\% {
     width: 20%;
-    min-width: 200px;
 }
 .row-el-25\% {
     width: 25%;
-    min-width: 250px;
 }
 .row-el-30\% {
     width: 30%;
-    min-width: 300px;
 }
 .row-el-35\% {
     width: 35%;
-    min-width: 350px;
 }
 .row-el-40\% {
     width: 40%;
-    min-width: 400px;
 }
 .row-el-45\% {
     width: 45%;
-    min-width: 450px;
 }
 .row-el-50\% {
     width: 50%;
-    min-width: 500px;
 }
 .row-el-55\% {
     width: 55%;
-    min-width: 550px;
 }
 .row-el-60\% {
     width: 60%;
-    min-width: 600px;
 }
 .row-el-65\% {
     width: 65%;
-    min-width: 650px;
 }
 .row-el-70\% {
     width: 70%;
-    min-width: 700px;
 }
 .row-el-75\% {
     width: 75%;
-    min-width: 750px;
 }
 .row-el-80\% {
     width: 80%;
-    min-width: 800px;
 }
 .row-el-85\% {
     width: 85%;
-    min-width: 850px;
 }
 .row-el-90\% {
     width: 90%;
-    min-width: 900px;
+
 }
 .row-el-95\% {
     width: 95%;
-    min-width: 950px;
+
 }
 .row-el-100\% {
     width: 100%;
-    min-width: 1000px;
+
+}
+
+
+.text-muted-foreground {
+    color: var(--muted-foreground);
+}
+.mb-3{
+    margin-bottom: calc(var(--spacing) * 3);
+}
+.pt-4{
+    padding-top: calc(var(--spacing) * 4);
+}
+:where(.space-y-6 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
 }
