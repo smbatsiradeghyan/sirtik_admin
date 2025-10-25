@@ -33,7 +33,7 @@ export const UploadImage: FC<UploadImageProps> = memo(({src, onUpload}) => {
 
   return (
     <div className="flex flex-row w-1/2 gap-4 ">
-      <div className="rounded-2xl overflow-hidden hover-shadow   cursor-pointer" onClick={handleButtonClick}>
+      <div className="rounded-2xl overflow-hidden hover-shadow  min-h-[300px] min-w-[400px]  cursor-pointer" onClick={handleButtonClick}>
         <input
           type="file"
           ref={fileInputRef}

@@ -1,5 +1,5 @@
-import { type ChangeEventHandler, type FC, type InputHTMLAttributes, useEffect, useRef } from 'react';
-import type { Locale }                                                                   from "@/helper/types.tsx";
+import { type ChangeEventHandler, type FC, type InputHTMLAttributes, memo, useEffect, useRef } from 'react';
+import type { Locale }                                                                         from "@/helper/types.tsx";
 
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
@@ -18,20 +18,21 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement | HTMLTextArea
 
 const minHeight = 100,
       maxHeight = 500
-export const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = memo(({
                                         id,
                                         label,
                                         isTextArea,
                                         name,
                                         onInputChange,
                                         onMLInputChange,
-                                        locale,
+                                        locale, isNumber,
                                         ...inputProps
 
                                       }) => {
   const Component = isTextArea ? 'textarea' : 'input'
 
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const textareaRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+
 
   const adjustHeight = () => {
     const textarea = textareaRef.current;
@@ -41,26 +42,49 @@ export const Input: FC<InputProps> = ({
       textarea.style.height = `${newHeight}px`;
     }
   };
-  const getValue = (value: string) => value
+
+  const getValue = (value: string) => isNumber
+    ? value.replace(/\D*/g, '')
+    : value
+
   const onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> = (e) => {
     onInputChange?.(getValue(e.target.value), e.target.name)
     if (locale && onMLInputChange) onMLInputChange(getValue(e.target.value), e.target.name, locale)
-    console.log(getValue(e.target.value))
   }
 
 
   useEffect(() => {
-    adjustHeight();
+    console.log(textareaRef.current?.scrollHeight, label, inputProps.value)
+    if (isTextArea) {
+      adjustHeight();
 
-  }, [inputProps.value]);
 
+    }
+  }, [inputProps.value, isTextArea]);
+
+
+  const callbackRef = (element: HTMLInputElement | HTMLTextAreaElement | null) => {
+    if (element && isTextArea) {
+      textareaRef.current = element
+      setTimeout(() => {
+        element.style.height = 'auto';
+        const newHeight = Math.min(Math.max(element.scrollHeight, minHeight), maxHeight);
+        element.style.height = `${newHeight}px`;
+      }, 450)
+
+
+      console.log('Элемент смонтирован и отрисован');
+      console.log('Высота:', element.scrollHeight);
+    }
+    else {
+      console.log('Элемент размонтирован');
+    }
+  };
   return (
     <div className="w-full flex flex-col gap-1">
       {label && <label className="text-sm" htmlFor={id || name}>{label}: </label>}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/*// @ts-expect-error*/}
-      <Component {...(isTextArea ? {ref: textareaRef} : undefined)} id={id || name} type="text" name={name}{...inputProps} onChange={onChange}/>
+      <Component {...(isTextArea ? {ref: callbackRef} : undefined)} id={id || name} type="text" name={name}{...inputProps} onChange={onChange}/>
     </div>
   );
-};
+});
 
