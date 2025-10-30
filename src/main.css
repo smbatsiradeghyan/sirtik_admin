@@ -51,13 +51,18 @@
 input, textarea {
     width: 100%;
     border-radius: 8px;
-    padding: 8px 16px;
+    padding:4px 16px;
     box-shadow: 0 0 3px #00000088;
     outline: none;
     border: none;
     transition: box-shadow .3s;
 }
+input:disabled, textarea:disabled {
+    opacity: 0.7;
+    padding:  4px 16px;
+    color: #4a5568;
 
+}
 textarea {
     resize: none;
 }

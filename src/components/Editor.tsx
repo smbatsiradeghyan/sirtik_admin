@@ -9,7 +9,7 @@ import { useLanguage }                       from "@/hooks/useLanguage.ts";
 
 interface IEditorProps {
   value?: IMultiLanguageString;
-  onEditorChange: (event: string, active: Locale) => void;
+  onEditorChange: (value: string, active: Locale) => void;
   title?: string;
   emptyTitle?: string;
 }
@@ -56,7 +56,7 @@ export const Editor: FC<IEditorProps> = ({
   }
 
   return (
-    <div className="flex flex-col w-full items-center justify-center gap-6">
+    <div className="flex flex-col w-full items-center justify-center ">
       <div className='flex justify-between items-center mb-4 w-full'>
         <h2 className="text-xl font-semibold ">{title}</h2>
         <div className='flex justify-end items-center gap-4 '>
@@ -71,11 +71,11 @@ export const Editor: FC<IEditorProps> = ({
           {!value?.[active] ? (
             <span className='empty-content'>{emptyTitle}</span>
           ) : (
-            <div className='space-y-6' dangerouslySetInnerHTML={{__html: value[active]}}/>
+            <div className='w-full space-y-6' dangerouslySetInnerHTML={{__html: value[active]}}/>
           )}
         </>
       ) : (
-        <div className="editor">
+        <div className="w-full  editor">
           <ReactQuill value={value?.[active] ?? ''} onChange={onEdit}/>
         </div>
       )}

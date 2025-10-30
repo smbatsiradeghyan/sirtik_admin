@@ -7,52 +7,60 @@ const Hero = lazy(() => import('./hero.page'));
 const Seo = lazy(() => import('./seo/seo.page'));
 const About = lazy(() => import('./about.page'));
 const Certificates = lazy(() => import('./certificates.page'));
-// const Exhibitions = lazy(() => import('./exhibition/exhibitions.page'));
-// const Pictures = lazy(() => import('./pictures/pictures.page'));
+const Categories = lazy(() => import('./categories.page'));
+const PostsList = lazy(() => import('./posts/postList.page'));
+const Post = lazy(() => import('./posts/post.page'));
 
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const PagesList = [
   {
-    name   : "Header Sections ✔️",
+    name   : "Header Sections",
     path   : '/header-sections',
     element: <HeaderSections/>
   },
   {
-    name   : "Seo ✔️",
+    name   : "Seo",
     path   : '/seo',
     element: <Seo/>
   },
   {
-    name   : "Contacts ✔️",
+    name   : "Contacts",
     path   : '/contacts',
     element: <Contacts/>
   },
   {
-    name   : "About ✔️",
+    name   : "About",
     path   : '/about',
     element: <About/>
   }, {
-    name   : "Hero ✔️",
+    name   : "Hero",
     path   : '/hero',
     element: <Hero/>
   }, {
-    name   : "Certificates ✔️",
-    path   : 'certificates',
+    name   : "Certificates",
+    path   : '/certificates',
     element: <Certificates/>
-  }, {
-    name   : "Reviews --",
-    path   : '/reviews',
-    element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
-  }, {
-    name   : "Posts --",
+  },
+  // {
+  //   //   name   : "Reviews",
+  //   //   path   : '/reviews',
+  //   //   element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
+  //   // },
+  {
+    name   : "Posts",
     path   : '/posts',
-    element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
+    element: <PostsList/>
   },
   {
-    name   : "Post Category --",
+    name   : "Posts",
+    path   : '/posts/:slug',
+    element: <Post/>
+  },
+  {
+    name   : "Post Category",
     path   : '/posts-category',
-    element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
+    element: <Categories/>
   },
   {
     name   : "404",
@@ -60,4 +68,4 @@ export const PagesList = [
     element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
   },
 ]
-export const DashboardTabs = PagesList.map(({name, path:url}) => ({name, url})).filter(({name})=>name !== '404')
+export const DashboardTabs = PagesList.map(({name, path: url}) => ({name, url})).filter(({name,url}) => name !== '404' && url !== '/posts/:slug' )
