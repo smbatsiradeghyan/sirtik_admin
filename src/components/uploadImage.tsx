@@ -14,7 +14,7 @@ export const UploadImage: FC<UploadImageProps> = memo(({
                                                          src,
                                                          onUpload,
                                                          size = 'normal',
-                                                         aspect = 'portrait'
+                                                         aspect = 'landscape'
                                                        }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 

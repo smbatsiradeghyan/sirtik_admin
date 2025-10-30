@@ -48,6 +48,11 @@ export const PagesList = [
   //   //   element: <h1 className="text-6xl w-full flex items-center justify-center">Page doesn't create yet</h1>
   //   // },
   {
+    name   : "Post Category",
+    path   : '/posts-category',
+    element: <Categories/>
+  },
+  {
     name   : "Posts",
     path   : '/posts',
     element: <PostsList/>
@@ -57,11 +62,7 @@ export const PagesList = [
     path   : '/posts/:slug',
     element: <Post/>
   },
-  {
-    name   : "Post Category",
-    path   : '/posts-category',
-    element: <Categories/>
-  },
+
   {
     name   : "404",
     path   : '*',
