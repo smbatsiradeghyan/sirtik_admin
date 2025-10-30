@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/categories.page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/posts/post.page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/posts/postList.page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/seo/seoForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/uploadImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/uploadImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helper/baseApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/baseApi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helper/getActivePath.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/getActivePath.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helper/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/certificates.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/certificates.page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/seo/seoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seoCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sections/dashboard/dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/sections/dashboard/dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/getData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/getData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/save.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/save.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +97,7 @@
       <workItem from="1761430310063" duration="4378000" />
       <workItem from="1761471744960" duration="5550000" />
       <workItem from="1761729329162" duration="23434000" />
-      <workItem from="1761815703999" duration="18210000" />
+      <workItem from="1761815703999" duration="18884000" />
     </task>
     <servers />
   </component>
