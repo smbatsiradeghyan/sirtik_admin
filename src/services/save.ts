@@ -1,125 +1,92 @@
-import type { IAboutData, IBannerData, ICategory, ICertificate, IContact, IExhibition, IHero, IMLSeoData, IPicture, ISection, ISeoData } from "@/helper/types";
-import { Axios }                                                                                                                         from "@/helper/baseApi";
-import { InfoUrls }                                                                                                                      from "./services.helper";
-import type { AxiosResponse }                                                                                                            from "axios";
+import type { IAboutData, ICertificate, IContact, IHero, IPost, IPostCategory, ISection, ISeoData } from "@/helper/types";
+import { Axios }                                                                                    from "@/helper/baseApi";
+import { InfoUrls }                                                                                 from "./services.helper";
+import type { AxiosResponse }                                                                       from "axios";
 
+
+interface UploadResult {
+  jpg: string;
+  webp: string;
+  publicId: string;
+}
 
 export const PisSaveService = {
-  bannerPic: async (data: { base64Image: string }): Promise<string> => {
+
+  pic: async (type: string, data: { base64Image: string }): Promise<UploadResult> => {
     try {
-      return (await Axios.post<string, { base64Image: string }>(InfoUrls.image('banners/'), data)).data as unknown as string;
-    } catch (error) {
-      console.error(error)
-      return "error"
-    }
-  },
-  pic      : async (type: string, data: { base64Image: string }): Promise<string> => {
-    try {
-      return (await Axios.post<string, { base64Image: string }>(InfoUrls.image(`${type}/`), data)).data as unknown as string;
+      return (await Axios.post<UploadResult, { base64Image: string }>(InfoUrls.image(`${type}/`), data)).data;
     } catch (error) {
       console.error(error)
 
-      return "error"
+      return {
+        jpg     : '',
+        webp    : '',
+        publicId: ''
+      }
     }
   },
 }
 
 export const SaveService = {
   contacts: (data: IContact[]): Promise<AxiosResponse<IContact[]>> => Axios.post<IContact[], IContact[]>(InfoUrls.info('contacts/'), data),
-  seo     : (data: ISeoData): Promise<AxiosResponse<IMLSeoData[]>> => Axios.post<IMLSeoData[], ISeoData>(InfoUrls.info('seo/'), data),
+  seo     : async (data: ISeoData): Promise<AxiosResponse<ISeoData[]>> => {
+    if (data.image && !data.image.match(/^http(.*)/)) {
+      data.image = (await PisSaveService.pic('seo', {base64Image: data.image})).jpg
+    }
+    return Axios.post<ISeoData[], ISeoData>(InfoUrls.info('seo/'), data)
+  },
   section : (data: ISection): Promise<AxiosResponse<ISection[]>> => Axios.post<ISection[], ISection>(InfoUrls.info('sections/'), data),
 
-  about      : async (data: IAboutData): Promise<AxiosResponse<IAboutData>> => {
+  about       : async (data: IAboutData): Promise<AxiosResponse<IAboutData>> => {
 
     if (data.image && !data.image.match(/^http(.*)/)) {
-      data.image = await PisSaveService.pic('about', {base64Image: data.image})
+      data.image = (await PisSaveService.pic('about', {base64Image: data.image})).webp
     }
 
     return Axios.post<IAboutData, IAboutData>(InfoUrls.info('about/'), data)
 
   },
-  hero       : async (data: IHero): Promise<AxiosResponse<IHero>> => {
+  hero        : async (data: IHero): Promise<AxiosResponse<IHero>> => {
 
     if (data.avatar && !data.avatar.match(/^http(.*)/)) {
-      data.avatar = await PisSaveService.pic('hero', {base64Image: data.avatar})
+      data.avatar = (await PisSaveService.pic('hero', {base64Image: data.avatar})).webp
     }
 
     return Axios.post<IHero, IHero>(InfoUrls.info('hero/'), data)
 
   },
-  certificate: async (data: ICertificate): Promise<AxiosResponse<ICertificate[]>> => {
+  certificate : async (data: ICertificate): Promise<AxiosResponse<ICertificate[]>> => {
 
     if (data.image && !data.image.match(/^http(.*)/)) {
-      data.image = await PisSaveService.pic('certificate', {base64Image: data.image})
+      data.image = (await PisSaveService.pic('certificate', {base64Image: data.image})).webp
     }
 
     return Axios.post<ICertificate[], ICertificate>(InfoUrls.info('certificate/'), data)
 
   },
+  postCategory: async (data: IPostCategory): Promise<AxiosResponse<IPostCategory[]>> => {
 
-  // todo : old functions should be deleted
-
-
-  categories: (data: ICategory): Promise<AxiosResponse<ICategory[]>> => Axios.post<ICategory[], ICategory>(InfoUrls.info('categories/'), data),
-
-  banner    : async (data: IBannerData): Promise<AxiosResponse<IBannerData[] | undefined>> => {
-
-    if (data.img && !data.img.match(/^http(.*)/)) {
-      const imgName = await PisSaveService.pic('banner', {base64Image: data.img})
-      if (imgName === 'error') {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        return
-      }
-      data.img = imgName
+    if (data.seo.image && !data.seo.image.match(/^http(.*)/)) {
+      data.seo.image = (await PisSaveService.pic('category', {base64Image: data.seo.image})).jpg
     }
 
-    return Axios.post<IBannerData[], IBannerData>(InfoUrls.info('banners/'), data)
+    return Axios.post<IPostCategory[], IPostCategory>(InfoUrls.info('postCategory/'), data)
 
   },
-  exhibition: async (data: IExhibition): Promise<AxiosResponse<IExhibition[]>> => {
+  post        : async (data: IPost): Promise<AxiosResponse<IPost>> => {
 
-    if (data.avatar && !data.avatar.match(/^http(.*)/)) {
-      const imgName = await PisSaveService.pic('exhibition', {base64Image: data.avatar})
-      if (imgName === 'error') {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        return
-      }
-      data.avatar = imgName
-    }
-    for (let i = 0; i < data.picturesFromExhibition.length; i++) {
-      if (data.picturesFromExhibition[i] && !data.picturesFromExhibition[i].match(/^http(.*)/)) {
-        const imgName = await PisSaveService.pic('exhibition', {base64Image: data.picturesFromExhibition[i]})
-        if (imgName === 'error') {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-          return
-        }
-        data.picturesFromExhibition[i] = imgName
-      }
+    if (data.image && !data.image.match(/^http(.*)/)) {
+      const urls = await PisSaveService.pic('post', {base64Image: data.image})
+      console.log(urls)
+
+      data.seo.image = urls.jpg
     }
 
-    return Axios.post<IExhibition[], IExhibition>(InfoUrls.info('exhibitions/'), data)
+    return Axios.post<IPost, IPost>(InfoUrls.info('posts/'), data)
 
   },
-  picture   : async (data: IPicture): Promise<AxiosResponse<IPicture[]>> => {
+  publishPost : async (slug: string): Promise<AxiosResponse<IPost>> =>  Axios.post< IPost,null>(InfoUrls.info(`posts/${slug}/`),null),
+  draftPost : async (slug: string): Promise<AxiosResponse<IPost>> =>  Axios.put< IPost,null>(InfoUrls.info(`posts/${slug}/`),null)
 
-    if (data.url && !data.url.match(/^http(.*)/)) {
-      const imgName = await PisSaveService.pic(`picture`, {base64Image: data.url})
-      if (imgName === 'error') {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        return
-      }
-      data.url = imgName
-    }
-
-    return Axios.post<IPicture[], IPicture>(InfoUrls.info('pictures/'), data)
-  },
-
-
-  moveBanner  : (data: { from: number, to: number }): Promise<AxiosResponse<IBannerData[]>> => Axios.put<IBannerData[], { from: number, to: number }>(InfoUrls.info('banners/'), data),
-  movePictures: (data: { from: number, to: number }): Promise<AxiosResponse<IPicture[]>> => Axios.put<IPicture[], { from: number, to: number }>(InfoUrls.info('pictures/'), data)
 
 }

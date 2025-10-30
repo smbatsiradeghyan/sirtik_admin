@@ -54,7 +54,6 @@ export const Input: FC<InputProps> = memo(({
 
 
   useEffect(() => {
-    console.log(textareaRef.current?.scrollHeight, label, inputProps.value)
     if (isTextArea) {
       adjustHeight();
 
@@ -73,12 +72,8 @@ export const Input: FC<InputProps> = memo(({
       }, 450)
 
 
-      console.log('Элемент смонтирован и отрисован');
-      console.log('Высота:', element.scrollHeight);
     }
-    else {
-      console.log('Элемент размонтирован');
-    }
+
   };
   return (
     <div className="w-full flex flex-col gap-1">

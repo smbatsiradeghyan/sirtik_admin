@@ -1,36 +1,25 @@
-export type DataFileNames =
-  'seo'
-  | 'sections'
-  | 'contacts'
-  | 'banner'
-  | 'about'
-export type PageNames = 'home' | 'about' | 'portfolio' | 'exhibition'
-export type ContentTabs = 'contacts' | 'about' | 'portfolio' | 'exhibition'
 
 export interface ISeoMetaData {
-  as: string
   name?: string
   property?: string
-  content: string
+  content: IMultiLanguageString
 }
 
 export interface ISeoData {
   id?: string
   url: string
-  locale: string
-  title?: string
-  author?: string
+  locale: Locale
+  title?: IMultiLanguageString
+  author?: IMultiLanguageString
   image?: string
-  jsonLd?: string
-  description?: string
-  keywords?: string
+  jsonLd?: IMultiLanguageString
+  description?: IMultiLanguageString
+  keywords?: IMultiLanguageString
   otherMetas: ISeoMetaData[]
 
 }
 
-export type IMLSeoData = {
-  [K in Locale]: ISeoData
-}
+
 export type  Locale = 'uk' | 'ru'
 export const Locale:{[K in Locale]:Locale}  = {
   uk : 'uk',
@@ -155,6 +144,7 @@ export interface ICategory {
   id?: string
   name: string
   slug: string
+  seo:ISeoData
 }
 
 
@@ -178,4 +168,38 @@ export interface ICertificate{
   year: string
   image: string
   id: string;
+  aspect:'portrait'| 'landscape' | 'square'
+}
+
+export interface IPostCategory {
+  id: string
+  slug: string
+  postCount:number
+  title: IMultiLanguageString
+  description: IMultiLanguageString
+  seo:ISeoData
+}
+
+
+
+
+export interface IPostMin {
+  id:string
+  name:string
+  slug:string
+  status:"published" | "draft"
+
+}
+export interface IPost {
+  id: string
+  title: IMultiLanguageString
+  slug: string
+  tags: IMultiLanguageString[]
+  image: string
+  date: string
+  categorySlug: string
+  content: IMultiLanguageString
+  excerpt: IMultiLanguageString
+  status:"published" | "draft"
+  seo:ISeoData
 }

@@ -14,7 +14,7 @@ export const Dashboard: FC = () => {
   const {onLogOut} = useAdmin()
   const location = useLocation();
   const activeTab = getActivePath(location.pathname)
-  console.log(DashboardTabs.map(tab => getAdminUrl(tab.url)))
+  console.log(activeTab)
   return (
     <div id="dashboard" className="flex flex-col flex-1 py-4 h-full w-full">
       <ul className="w-full h-full felx-1 flex flex-col justify-start gap-4 list-none p-0">

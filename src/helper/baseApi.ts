@@ -46,6 +46,8 @@ export const Axios = {
     axios.post<D, AxiosResponse<T>>(getUrl(url), data, getConfig(config)),
   put   : <T = AnyObject, D = AnyObject>(url: string, data: D, config?: Partial<AxiosRequestConfig>) =>
     axios.put<D, AxiosResponse<T>>(getUrl(url), data, getConfig(config)),
+  patch   : <T = AnyObject, D = AnyObject>(url: string, data: D, config?: Partial<AxiosRequestConfig>) =>
+    axios.put<D, AxiosResponse<T>>(getUrl(url), data, getConfig(config)),
   delete: <T = AnyObject>(url: string, config?: Partial<AxiosRequestConfig>) =>
     axios.delete<T>(getUrl(url), getConfig(config)),
 };

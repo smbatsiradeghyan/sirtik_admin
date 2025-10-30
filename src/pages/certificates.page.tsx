@@ -1,19 +1,20 @@
 import { type FC, useCallback, useEffect, useRef, useState } from 'react';
 import { SaveService }                                       from "@/services/save";
-import { GetService }                                from "@/services/getData";
-import { type ICertificate, Locale }                 from "@/helper/types";
-import { useQuery }                                  from "@/hooks/useQuery";
-import { BaseAdminPage }                             from "@/components/baseAdminPage";
-import { Card }                                      from "@/components/card.tsx";
-import { useLocale }                                 from "@/contexts/locale/useLocale.ts";
-import { Popup }                                     from "@/components/popup.tsx";
-import { useStatus }                                 from "@/hooks/useStatus.ts";
-import { UploadImage }                               from "@/components/uploadImage.tsx";
-import { Input }                                     from "@/components/input.tsx";
+import { GetService }                                        from "@/services/getData";
+import { type ICertificate, Locale }                         from "@/helper/types";
+import { useQuery }                                          from "@/hooks/useQuery";
+import { BaseAdminPage }                                     from "@/components/baseAdminPage";
+import { Card }                                              from "@/components/card.tsx";
+import { useLocale }                                         from "@/contexts/locale/useLocale.ts";
+import { Popup }                                             from "@/components/popup.tsx";
+import { useStatus }                                         from "@/hooks/useStatus.ts";
+import { UploadImage }                                       from "@/components/uploadImage.tsx";
+import { Input }                                             from "@/components/input.tsx";
 import { DeleteService }                                     from "@/services/delete.ts";
 
 
 const defaultCertificate: ICertificate = {
+  aspect : "landscape",
   id   : "",
   image: "",
   title: {
@@ -52,7 +53,7 @@ const CertificatesPage: FC = () => {
       setActiveCertificate(current => current && ({...current, [name]: {...current[name as 'title' | 'description'], [locale]: value}}))
     , [])
   const onChange = useCallback((value: string, name: string) =>
-      setActiveCertificate(current => current && ({...current, [name]: +value}))
+      setActiveCertificate(current => current && ({...current, [name]:  value}))
     , [])
 
 
@@ -90,15 +91,27 @@ const CertificatesPage: FC = () => {
         }
       </div>
 
-      <Popup title="Certificate" status={status} onClose={toggleStatus}  actionComponent={<button className="btn" disabled={!canSave} onClick={onSave}>Save</button>}>
+      <Popup title="Certificate" status={status} onClose={toggleStatus} actionComponent={<button className="btn" disabled={!canSave} onClick={onSave}>Save</button>}>
         {
           activeCertificate &&
           <div className="w-full gap-4 flex flex-col items-center justify-start">
             <div className="w-full gap-4 flex items-start justify-center">
-              <UploadImage onUpload={onUpload} src={activeCertificate?.image}/>
+              <UploadImage onUpload={onUpload} src={activeCertificate?.image} aspect={activeCertificate.aspect} />
             </div>
             <hr className="divider"/>
-            <Input value={`${activeCertificate.year || 0}` } isNumber label="Year" name="year" onInputChange={onChange}/>
+            <div className="row">
+              <Input value={`${activeCertificate.year || 0}`} isNumber label="Year" name="year" onInputChange={onChange}/>
+              <div
+                onClick={() => onChange('portrait', 'aspect')}
+                className={`px-3 py-1 mt-6 rounded-xl hover-shadow cursor-pointer ${activeCertificate.aspect === 'portrait' ? 'bg-primary' : ''}`}
+              >Portrait</div>              <div
+                onClick={() => onChange('landscape', 'aspect')}
+                className={`px-3 py-1  mt-6  rounded-xl hover-shadow cursor-pointer ${activeCertificate.aspect === 'landscape' ? 'bg-primary' : ''}`}
+              >Landscape</div>              <div
+                onClick={() => onChange('square', 'aspect')}
+                className={`px-3 py-1  mt-6  rounded-xl hover-shadow cursor-pointer ${activeCertificate.aspect === 'square' ? 'bg-primary' : ''}`}
+              >Square</div>
+            </div>
             <hr className="divider"/>
             <div className="w-full flex flex-col gap-4">
               <div className="row items-start">
@@ -115,7 +128,7 @@ const CertificatesPage: FC = () => {
               </div>
             </div>
             <hr className="divider"/>
-            <button className="btn delete" onClick={  onDelete}>Delete Certificate</button>
+            <button className="btn delete" onClick={onDelete}>Delete Certificate</button>
           </div>
         }
 
