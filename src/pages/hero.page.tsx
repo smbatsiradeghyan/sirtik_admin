@@ -15,6 +15,10 @@ const defaultData: IHero = {
     ru: '',
     uk: ''
   },
+  imageAlt: {
+    ru: '',
+    uk: ''
+  },
   title      : {
     ru: '',
     uk: ''
@@ -35,6 +39,7 @@ const HeroPage: FC = () => {
       title       : res?.title ?? defaultData.title,
       description : res?.description ?? defaultData.description,
       avatar      : res?.avatar ?? defaultData.avatar,
+      imageAlt      : res?.imageAlt ?? defaultData.imageAlt,
       clientsCount: res?.clientsCount ?? 0,
       experience  : res?.experience ?? 0,
       happyClients: res?.happyClients ?? 0,
@@ -72,11 +77,14 @@ const HeroPage: FC = () => {
 
   return (
     <BaseAdminPage title="Hero" canSave={canSave} onSave={onSave}>
-      <div className="w-full gap-4 flex items-start justify-center">
+      <div className="w-full gap-4 flex flex-col items-center justify-center">
 
         <UploadImage onUpload={onUpload} src={hero.avatar}/>
 
-
+        <div className="row">
+          <Input key="imageAlt.uk" label="imageAlt UK" value={hero.imageAlt.uk} name="imageAlt" locale={Locale.uk} onMLInputChange={onMLChange}/>
+          <Input key="imageAlt.ru" label="imageAlt RU" value={hero.imageAlt.ru} name="imageAlt" locale={Locale.ru} onMLInputChange={onMLChange}/>
+        </div>
       </div>
       <hr className="divider"/>
       <div className="w-full flex flex-col gap-4">

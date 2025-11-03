@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helper/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/types.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/about.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/about.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/certificates.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/certificates.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/headerSections.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/headerSections.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/hero.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hero.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/posts/post.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/posts/post.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/seo/seoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seoForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/save.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/save.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "pages",
-    "last_opened_file_path": "/Users/venjo/projects/Sirtik/sirtik_admin/src/contexts/postCategoryes",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/venjo/projects/Sirtik/sirtik_admin/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;pages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/venjo/projects/Sirtik/sirtik_admin/src/contexts/postCategoryes&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/venjo/projects/Sirtik/sirtik_admin/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/contexts/postCategoryes" />
@@ -97,7 +107,9 @@
       <workItem from="1761430310063" duration="4378000" />
       <workItem from="1761471744960" duration="5550000" />
       <workItem from="1761729329162" duration="23434000" />
-      <workItem from="1761815703999" duration="18884000" />
+      <workItem from="1761815703999" duration="28392000" />
+      <workItem from="1762156724703" duration="67000" />
+      <workItem from="1762156839858" duration="4534000" />
     </task>
     <servers />
   </component>

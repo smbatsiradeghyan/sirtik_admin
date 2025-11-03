@@ -16,6 +16,10 @@ const defaultData: IAboutData = {
   description: {
     ru: '',
     uk: ''
+  },
+  imageAlt: {
+    ru: '',
+    uk: ''
   }
 }
 const defaultExpertise: IAboutExpertise = {
@@ -40,6 +44,7 @@ const AboutPage: FC = () => {
     const data: IAboutData = {
       description: res?.description ?? defaultData.description,
       image      : res?.image ?? defaultData.image,
+      imageAlt      : res?.imageAlt ?? defaultData.imageAlt,
       expertise  : addMissedExpertise(res?.expertise)
     }
     setAbout(data)
@@ -68,6 +73,13 @@ const AboutPage: FC = () => {
                             .map((expertise, i) => i === index ? ({...expertise, title: {...expertise.title, [locale]: value}}) : expertise)
         }))
     , [])
+  const onMLChangeIA = useCallback(  (value: string, name: string, locale: Locale) =>
+      setAbout(current =>
+        ({
+          ...current,
+          [name]:{...current[name as 'imageAlt'],[locale]:value}
+               }))
+    , [])
   const onChange = useCallback((index: number) => (value: string) =>
       setAbout(current =>
         ({
@@ -87,11 +99,14 @@ const AboutPage: FC = () => {
 
   return (
     <BaseAdminPage title="About" canSave={canSave} onSave={onSave}>
-      <div className="w-full gap-4 flex items-start justify-center">
+      <div className="w-full gap-4 flex flex-col items-center justify-center">
 
         <UploadImage onUpload={onUpload} src={about.image}/>
 
-
+<div className="row">
+  <Input key="imageAlt.uk" label="imageAlt UK" value={about.imageAlt.uk} name="imageAlt" locale={Locale.uk} onMLInputChange={onMLChangeIA}/>
+  <Input key="imageAlt.ru" label="imageAlt RU" value={about.imageAlt.ru} name="imageAlt" locale={Locale.ru} onMLInputChange={onMLChangeIA}/>
+</div>
       </div>
       <hr className="divider"/>
 

@@ -28,7 +28,7 @@ const SeoPage: FC = () => {
   console.log(seos)
   return (
     <BaseAdminPage title="Seo">
-      {seos.map(seo => <SeoCard   data={seo} onSave={onSave}/>)}
+      {seos.map(seo => <SeoCard key={seo.id}  data={seo} onSave={onSave}/>)}
     </BaseAdminPage>
 
   );

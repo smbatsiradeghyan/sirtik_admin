@@ -2,6 +2,7 @@ import { type Dispatch, type FC, type SetStateAction, useState } from 'react';
 import { type ISeoData, type ISeoMetaData, Locale }              from "@/helper/types";
 import { Input }                                                 from "@/components/input";
 import { UploadImage }                                           from "@/components/uploadImage.tsx";
+import { updateJSLoad }                                          from "@/utils";
 
 
 interface SeoFormProps {
@@ -18,29 +19,7 @@ const emptyMeta: ISeoMetaData = {
   property: ''
 }
 
-const updateJSLoad = (data: ISeoData) => ({
-  uk: JSON.stringify({
-    "@context"   : "https:schema.org",
-    "@type"      : "WebSite",
-    "name"       : data.title?.uk,
-    "url"        : data.url,
-    "description": data.description?.uk,
-    "inLanguage" : data.locale,
-    "image"      : data.image,
-    "author"     : data.author?.uk
-  }),
-  ru: JSON.stringify({
-    "@context"   : "https:schema.org",
-    "@type"      : "WebSite",
-    "name"       : data.title?.ru,
-    "url"        : data.url,
-    "description": data.description?.ru,
-    "inLanguage" : data.locale,
-    "image"      : data.image,
-    "author"     : data.author?.ru
 
-  })
-})
 
 export const SeoForm: FC<SeoFormProps> = ({data, onUpdate}) => {
   const [newMeta, setNewMeta] = useState<ISeoMetaData>(emptyMeta)
@@ -48,7 +27,7 @@ export const SeoForm: FC<SeoFormProps> = ({data, onUpdate}) => {
   console.log(data)
   const onChange = (value: string, name: string) => onUpdate(current => ({...current, [name]: value, jsonLd: updateJSLoad({...current, [name]: value})}))
   const onMLChange = (value: string, name: string, locale: Locale) =>
-    onUpdate(current => ({...current, [name]: {...current[name as 'title' | 'description' | 'author'], [locale]: value}}))
+    onUpdate(current => ({...current, [name]: {...current[name as 'title' | 'description' | 'imageAlt'], [locale]: value}}))
 
   const onMetaChange = (value: string, inputName: string) => {
     const [index, name] = inputName.split('-')
@@ -108,8 +87,8 @@ export const SeoForm: FC<SeoFormProps> = ({data, onUpdate}) => {
         <UploadImage size="small" onUpload={(value: string) => onChange(value, 'image')} src={data.image}/>
         <div className="w-full gap-4 flex flex-col items-center justify-start">
           <div className="row">
-            <Input id={`$${data.id}-author-uk`} label="Author UK" value={data.author?.uk || ''} name="author" placeholder="Author UK" onMLInputChange={onMLChange} locale={Locale.uk}/>
-            <Input id={`$${data.id}-author-ru`} label="Author RU" value={data.author?.ru || ''} name="author" placeholder="Author RU" onMLInputChange={onMLChange} locale={Locale.ru}/>
+            <Input id={`$${data.id}-imageAlt-uk`} label="Image Alt UK" value={data.imageAlt?.uk || ''} name="imageAlt" placeholder="Image Alt UK" onMLInputChange={onMLChange} locale={Locale.uk}/>
+            <Input id={`$${data.id}-imageAlt-ru`} label="Image Alt RU" value={data.imageAlt?.ru || ''} name="imageAlt" placeholder="Image Alt RU" onMLInputChange={onMLChange} locale={Locale.ru}/>
           </div>
           <div className="row">
             <Input id={`$${data.id}-title-uk`} label="Title UK" value={data.title?.uk || ''} name="title" placeholder="Title UK" onMLInputChange={onMLChange} locale={Locale.uk}/>
