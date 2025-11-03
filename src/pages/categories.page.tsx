@@ -28,7 +28,11 @@ const defaultCategory: IPostCategory = {
   seo        : {
     url       : "",
     locale    : 'uk',
-    otherMetas: []
+    otherMetas: [],
+    jsonLd    : {
+      ru: '{}',
+      uk: '{}'
+    }
   }
 }
 

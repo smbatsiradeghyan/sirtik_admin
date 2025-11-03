@@ -21,6 +21,10 @@ const defaultCertificate: ICertificate = {
     ru: '',
     uk: ''
   },
+  imageAlt: {
+    ru: '',
+    uk: ''
+  },
   year : ""
 }
 
@@ -95,8 +99,12 @@ const CertificatesPage: FC = () => {
         {
           activeCertificate &&
           <div className="w-full gap-4 flex flex-col items-center justify-start">
-            <div className="w-full gap-4 flex items-start justify-center">
+            <div className="w-full gap-4 flex flex-col items-center justify-center">
               <UploadImage onUpload={onUpload} src={activeCertificate?.image} aspect={activeCertificate.aspect} />
+              <div className="row">
+                <Input key="imageAlt.uk" label="imageAlt UK" value={activeCertificate.imageAlt?.uk} name="imageAlt" locale={Locale.uk} onMLInputChange={onMLChange}/>
+                <Input key="imageAlt.ru" label="imageAlt RU" value={activeCertificate.imageAlt?.ru} name="imageAlt" locale={Locale.ru} onMLInputChange={onMLChange}/>
+              </div>
             </div>
             <hr className="divider"/>
             <div className="row">

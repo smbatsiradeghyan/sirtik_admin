@@ -2,15 +2,18 @@ import { type FC, useCallback, useEffect, useRef, useState }     from 'react';
 import { BaseAdminPage }                                         from "@/components/baseAdminPage";
 import { useQuery }                                              from "@/hooks/useQuery.ts";
 import { type IPost, type IPostCategory, type ISeoData, Locale } from "@/helper/types.tsx";
-import { GetService }             from "@/services/getData.ts";
-import { useNavigate, useParams } from "react-router-dom";
-import { Input }                  from "@/components/input.tsx";
+import { GetService }                                            from "@/services/getData.ts";
+import { useNavigate, useParams }                                from "react-router-dom";
+import { Input }                                                 from "@/components/input.tsx";
 import { UploadImage }                                           from "@/components/uploadImage.tsx";
 import { Editor }                                                from "@/components/Editor.tsx";
 import { SaveService }                                           from "@/services/save.ts";
 import { SeoForm }                                               from "@/pages/seo/seoForm.tsx";
 
-
+export const Author = {
+  ru: "Виктория Панова",
+  uk: "Вікторія Панова"
+}
 const defaultPost: IPost = {
   content     : {
     ru: "",
@@ -31,13 +34,18 @@ const defaultPost: IPost = {
     ru: "",
     uk: ""
   },
+  imageAlt       : {
+    ru: "",
+    uk: ""
+  },
   seo         : {
     url       : "blog/post/",
+
     locale    : 'uk',
     otherMetas: [],
-    author    : {
-      ru: "Виктория Панова",
-      uk: "Вікторія Панова"
+    jsonLd    : {
+      ru: '{}',
+      uk: '{}'
     }
   }
 
@@ -61,7 +69,6 @@ const PostPage: FC = () => {
     !!post.image
 
 
-
   useEffect(() => {
     (async () => {
       console.log('==> fetching post ', slug)
@@ -83,7 +90,7 @@ const PostPage: FC = () => {
     if (!canSave) return
     const saveQuery = query<IPost>(() => SaveService.post(post))
     const res = await saveQuery()
-    if(res) {
+    if (res) {
       navigate(`/posts/${res.slug}`);
     }
     setPost(res || defaultPost)
@@ -94,7 +101,7 @@ const PostPage: FC = () => {
       setPost(current => ({
         ...current,
         [name]: {...current[name as 'title'], [locale]: value},
-        ...(name === 'title' ? {seo: {...current.seo, title: {...current.seo.title, [locale]: `${value} | ${post.seo.author?.[locale]}`}}} : {})
+        ...(name === 'title' ? {seo: {...current.seo, title: {...current.seo.title, [locale]: `${value} | ${Author?.[locale]}`}}} : {})
       }))
     , [])
   //
@@ -110,16 +117,16 @@ const PostPage: FC = () => {
 
   const onUpdateSeo = (CB: ((seo: ISeoData) => ISeoData)) => setPost(current => current && ({...current, seo: CB(current.seo)}))
 
-  const secondaryAction = !canSave && post.id ?{
-    secondaryActionTitle:post.status==="published"?"Draft":"Publish",
-    onSecondaryAction:async ()=>{
-      const saveQuery = query<IPost>(() => SaveService[post.status==="published"?'draftPost':'publishPost'](post.slug))
+  const secondaryAction = !canSave && post.id ? {
+    secondaryActionTitle: post.status === "published" ? "Draft" : "Publish",
+    onSecondaryAction   : async () => {
+      const saveQuery = query<IPost>(() => SaveService[post.status === "published" ? 'draftPost' : 'publishPost'](post.slug))
       const res = await saveQuery()
       setPost(res || defaultPost)
       defValue.current = res || defaultPost
 
     }
-  }:{}
+  } : {}
   console.log({secondaryAction})
 
   return (
@@ -159,6 +166,20 @@ const PostPage: FC = () => {
 
         <div className="flex flex-col flex-1 items-center gap-4 w-full justify-start">
 
+          <div className="row items-start">
+
+            <Input   name="imageAlt" id="imageAlt.uk"
+                   value={post.imageAlt?.uk}
+                   label="imageAlt UK"
+                   locale={Locale.uk}
+                   onMLInputChange={onMLChange}/>
+            <Input   name="imageAlt" id="imageAlt.ru"
+                   value={post.imageAlt?.ru}
+                   label="imageAlt RU"
+                   locale={Locale.ru}
+                   onMLInputChange={onMLChange}/>
+
+          </div>
           <div className="row items-start">
 
             <Input isTextArea name="excerpt" id="excerpt.uk"

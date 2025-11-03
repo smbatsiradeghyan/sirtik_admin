@@ -10,9 +10,9 @@ export interface ISeoData {
   url: string
   locale: Locale
   title?: IMultiLanguageString
-  author?: IMultiLanguageString
+  imageAlt?: IMultiLanguageString
   image?: string
-  jsonLd?: IMultiLanguageString
+  jsonLd: IMultiLanguageString
   description?: IMultiLanguageString
   keywords?: IMultiLanguageString
   otherMetas: ISeoMetaData[]
@@ -45,7 +45,7 @@ export interface ISection {
   id: string,
   sectionId: string
   htmlId: string
-  label: IMultiLanguageString
+  label: string
   isVisible: boolean
 }
 
@@ -93,6 +93,7 @@ export interface IAboutData {
   expertise: IAboutExpertise[]
   image: string
   description: IMultiLanguageString
+  imageAlt: IMultiLanguageString
 
 }
 
@@ -107,6 +108,7 @@ export interface IHero{
   avatar: string
   title: IMultiLanguageString
   description: IMultiLanguageString
+  imageAlt: IMultiLanguageString
   clientsCount?: number
   experience?: number
   happyClients?: number
@@ -169,6 +171,8 @@ export interface ICertificate{
   image: string
   id: string;
   aspect:'portrait'| 'landscape' | 'square'
+  imageAlt: IMultiLanguageString
+
 }
 
 export interface IPostCategory {
@@ -202,4 +206,6 @@ export interface IPost {
   excerpt: IMultiLanguageString
   status:"published" | "draft"
   seo:ISeoData
+  imageAlt: IMultiLanguageString
+
 }
