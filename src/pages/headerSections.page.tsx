@@ -62,7 +62,7 @@ const HeaderSectionsPage: FC = () => {
         </div>
         {
           sections.map((section, index) => <div key={index} className="row">
-            <input disabled={false} className="flex-1" value={section.label} onChange={onChangeLabel(index)}/>
+            <input disabled className="flex-1" value={section.label} onChange={onChangeLabel(index)}/>
             <div className="row-el-5%  flex items-center justify-center">
               <Switch status={section.isVisible} onChange={() => onChangeStatus(index)}/>
             </div>
