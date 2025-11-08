@@ -89,16 +89,17 @@ const HeroPage: FC = () => {
       <hr className="divider"/>
       <div className="w-full flex flex-col gap-4">
         <div className="row items-start">
-          <div className="row-el-50%"><Input value={hero.title.ru} label="Title ru" name="title" id="title-ru" locale={Locale.ru} onMLInputChange={onMLChange}/></div>
           <div className="row-el-50%"><Input value={hero.title.uk} label="Title uk" name="title" id="title-uk" locale={Locale.uk} onMLInputChange={onMLChange}/></div>
+          <div className="row-el-50%"><Input value={hero.title.ru} label="Title ru" name="title" id="title-ru" locale={Locale.ru} onMLInputChange={onMLChange}/></div>
         </div>
         <div className="row items-start">
           <div className="row-el-50%">
-            <Input isTextArea value={hero.description.ru} label="Description ru" id="description-ru" name="description" locale={Locale.ru} onMLInputChange={onMLChange}/>
-          </div>
-          <div className="row-el-50%">
             <Input isTextArea value={hero.description.uk} label="Description uk" id="description-uk" name="description" locale={Locale.uk} onMLInputChange={onMLChange}/>
           </div>
+          <div className="row-el-50%">
+            <Input isTextArea value={hero.description.ru} label="Description ru" id="description-ru" name="description" locale={Locale.ru} onMLInputChange={onMLChange}/>
+          </div>
+
         </div>
       </div>
       <hr className="divider"/>

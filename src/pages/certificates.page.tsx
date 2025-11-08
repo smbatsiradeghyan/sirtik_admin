@@ -123,20 +123,27 @@ const CertificatesPage: FC = () => {
             <hr className="divider"/>
             <div className="w-full flex flex-col gap-4">
               <div className="row items-start">
-                <div className="row-el-50%"><Input value={activeCertificate?.title.ru || ''} label="Title ru" name="title" id="title-ru" locale={Locale.ru} onMLInputChange={onMLChange}/></div>
                 <div className="row-el-50%"><Input value={activeCertificate?.title.uk || ''} label="Title uk" name="title" id="title-uk" locale={Locale.uk} onMLInputChange={onMLChange}/></div>
+                <div className="row-el-50%"><Input value={activeCertificate?.title.ru || ''} label="Title ru" name="title" id="title-ru" locale={Locale.ru} onMLInputChange={onMLChange}/></div>
               </div>
               <div className="row items-start">
                 <div className="row-el-50%">
-                  <Input isTextArea value={activeCertificate.description?.ru || ''} label="Description ru" id="description-ru" name="description" locale={Locale.ru} onMLInputChange={onMLChange}/>
-                </div>
-                <div className="row-el-50%">
                   <Input isTextArea value={activeCertificate.description?.uk || ''} label="Description uk" id="description-uk" name="description" locale={Locale.uk} onMLInputChange={onMLChange}/>
                 </div>
+                <div className="row-el-50%">
+                  <Input isTextArea value={activeCertificate.description?.ru || ''} label="Description ru" id="description-ru" name="description" locale={Locale.ru} onMLInputChange={onMLChange}/>
+                </div>
+
               </div>
             </div>
-            <hr className="divider"/>
-            <button className="btn delete" onClick={onDelete}>Delete Certificate</button>
+            {
+              activeCertificate.id &&
+              <>
+                <hr className="divider"/>
+                <button className="btn delete" onClick={onDelete}>Delete Certificate</button>
+              </>
+
+        }
           </div>
         }
 

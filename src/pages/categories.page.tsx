@@ -1,16 +1,15 @@
-import { type FC, useCallback, useEffect, useRef, useState }         from 'react';
-import { GetService }                                                from "@/services/getData";
-import {   type IPostCategory, type ISeoData, Locale } from "@/helper/types";
-import { useQuery }                                                  from "@/hooks/useQuery";
-import { BaseAdminPage }                                             from "@/components/baseAdminPage";
-import { Card }                                                      from "@/components/card.tsx";
-import { useLocale }                                                 from "@/contexts/locale/useLocale.ts";
-import { Popup }                                                     from "@/components/popup.tsx";
-import { useStatus }                                                 from "@/hooks/useStatus.ts";
-import { UploadImage }                                               from "@/components/uploadImage.tsx";
-import { Input }                                                     from "@/components/input";
-import { SeoForm }                                                   from "@/pages/seo/seoForm.tsx";
-import { SaveService }                                               from "@/services/save.ts";
+import { type FC, useCallback, useEffect, useRef, useState } from 'react';
+import { GetService }                                        from "@/services/getData";
+import { type IPostCategory, type ISeoData, Locale }         from "@/helper/types";
+import { useQuery }                                          from "@/hooks/useQuery";
+import { BaseAdminPage }                                     from "@/components/baseAdminPage";
+import { Card }                                              from "@/components/card.tsx";
+import { useLocale }                                         from "@/contexts/locale/useLocale.ts";
+import { Popup }                                             from "@/components/popup.tsx";
+import { useStatus }                                         from "@/hooks/useStatus.ts";
+import { Input }                                             from "@/components/input";
+import { SeoForm }                                           from "@/pages/seo/seoForm.tsx";
+import { SaveService }                                       from "@/services/save.ts";
 
 
 const defaultCategory: IPostCategory = {
@@ -58,15 +57,7 @@ const CategoriesPage: FC = () => {
     defValue.current = index === -1 ? defaultCategory : categories[index]
     toggleStatus()
   }
-  const onUpload = useCallback((image: string) =>
-      setActiveCategory(current => current && ({
-        ...current, seo: {
-          ...current.seo,
-          image,
-        }
-      }))
-    , [])
-  //
+
   const onMLChange = useCallback((value: string, name: string, locale: Locale) =>
       setActiveCategory(current => current && ({...current, [name]: {...current[name as 'title' | 'description'], [locale]: value}}))
     , [])
@@ -77,7 +68,7 @@ const CategoriesPage: FC = () => {
         return current && ({
           ...current,
           [name]: value,
-        ...(name==='slug'?{seo:{...current.seo,url:("blog/category/"+value).replace(/blog\/category\//g,"blog/category/")}}:{})
+          ...(name === 'slug' ? {seo: {...current.seo, url: ("blog/category/" + value).replace(/blog\/category\//g, "blog/category/")}} : {})
         })
       })
 
@@ -112,11 +103,11 @@ const CategoriesPage: FC = () => {
         {
           categories.map((category, index) =>
             <Card className=" p-4 gap-4" key={category.id} onClick={onOpenModal(index)}>
-             <div className="flex justify-between">
-               <p className="text-xl ">{category.title[active]}</p>
-               <p className="text-xl text-muted-foreground">{category.postCount}</p>
+              <div className="flex justify-between">
+                <p className="text-xl ">{category.title[active]}</p>
+                <p className="text-xl text-muted-foreground">{category.postCount}</p>
 
-             </div>
+              </div>
             </Card>
           )
         }
@@ -127,7 +118,7 @@ const CategoriesPage: FC = () => {
           activeCategory &&
           <div className="w-full gap-4 flex flex-col items-center justify-start">
             <div className="row">
-              <UploadImage size='small' onUpload={onUpload} src={activeCategory?.seo?.image}/>
+
               <div className="flex flex-col flex-1 items-start gap-2">
                 <div className="row">
                   <Input name="title" id="title.uk" value={activeCategory.title.uk} label="Title UK" locale={Locale.uk} onMLInputChange={onMLChange}/>
@@ -139,32 +130,13 @@ const CategoriesPage: FC = () => {
             </div>
             <hr className="divider"/>
             <div className="row">
-              <Input isTextArea name="description" id="description.ru" value={activeCategory.description.ru} label="Description RU" locale={Locale.ru} onMLInputChange={onMLChange}/>
               <Input isTextArea name="description" id="description.uk" value={activeCategory.description.uk} label="Description UK" locale={Locale.uk} onMLInputChange={onMLChange}/>
+              <Input isTextArea name="description" id="description.ru" value={activeCategory.description.ru} label="Description RU" locale={Locale.ru} onMLInputChange={onMLChange}/>
 
             </div>
             <hr className="divider"/>
             <h3 className="w-full text-center text-xl">SEO</h3>
             <SeoForm data={activeCategory.seo} onUpdate={onUpdateSeo}/>
-
-            {/*<Input value={`${activeCategory.year || 0}` } isNumber label="Year" name="year" onInputChange={onChange}/>*/}
-            {/*<hr className="divider"/>*/}
-            {/*<div className="w-full flex flex-col gap-4">*/}
-            {/*  <div className="row items-start">*/}
-            {/*    <div className="row-el-50%"><Input value={activeCategory?.title.ru || ''} label="Title ru" name="title" id="title-ru" locale={Locale.ru} onMLInputChange={onMLChange}/></div>*/}
-            {/*    <div className="row-el-50%"><Input value={activeCategory?.title.uk || ''} label="Title uk" name="title" id="title-uk" locale={Locale.uk} onMLInputChange={onMLChange}/></div>*/}
-            {/*  </div>*/}
-            {/*  <div className="row items-start">*/}
-            {/*    <div className="row-el-50%">*/}
-            {/*      <Input isTextArea value={activeCategory.description?.ru || ''} label="Description ru" id="description-ru" name="description" locale={Locale.ru} onMLInputChange={onMLChange}/>*/}
-            {/*    </div>*/}
-            {/*    <div className="row-el-50%">*/}
-            {/*      <Input isTextArea value={activeCategory.description?.uk || ''} label="Description uk" id="description-uk" name="description" locale={Locale.uk} onMLInputChange={onMLChange}/>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</div>*/}
-            {/*<hr className="divider"/>*/}
-            {/*<button className="btn delete" onClick={  onDelete}>Delete Category</button>*/}
           </div>
         }
         <div className="row" style={{justifyContent: 'center'}}>

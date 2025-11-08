@@ -77,7 +77,7 @@ export const Input: FC<InputProps> = memo(({
   };
   return (
     <div className="w-full flex flex-col gap-1">
-      {label && <label className="text-sm" htmlFor={id || name}>{label}: </label>}
+      {label && <label className="text-sm text-muted-foreground" htmlFor={id || name}>{label}: </label>}
       <Component {...(isTextArea ? {ref: callbackRef} : undefined)} id={id || name} type="text" name={name}{...inputProps} onChange={onChange}/>
     </div>
   );

@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="481d4d7a-1c8a-4f2b-8c3e-95d4d3e77913" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helper/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/types.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/about.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/about.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/categories.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/categories.page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/certificates.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/certificates.page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/headerSections.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/headerSections.page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/hero.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/hero.page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/posts/post.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/posts/post.page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seo.page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/seo/seoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/seo/seoForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/save.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/save.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/pages.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/pages.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +104,8 @@
       <workItem from="1761729329162" duration="23434000" />
       <workItem from="1761815703999" duration="28392000" />
       <workItem from="1762156724703" duration="67000" />
-      <workItem from="1762156839858" duration="4534000" />
+      <workItem from="1762156839858" duration="5833000" />
+      <workItem from="1762593884576" duration="631000" />
     </task>
     <servers />
   </component>
